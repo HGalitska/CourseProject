@@ -1,6 +1,8 @@
 const Document = require('../models/Document.model.js');
 
-function validateRequestData(req) {
+
+exports.create = (req, res) => {
+
   if (!req.body.title) {
     return res.status(400).send({
       message: "Document title can not be empty."
@@ -12,11 +14,6 @@ function validateRequestData(req) {
       message: "Document file path can not be empty."
     });
   }
-}
-
-exports.create = (req, res) => {
-
-  validateRequestData(req);
 
   const document = new Document({
     title: req.body.title,
@@ -73,7 +70,17 @@ exports.findOne = (req, res) => {
 // Update a Document identified by the documentId in the request
 exports.update = (req, res) => {
 
-  validateRequestData(req);
+  if (!req.body.title) {
+    return res.status(400).send({
+      message: "Document title can not be empty."
+    });
+  }
+
+  if (!req.body.filePath) {
+    return res.status(400).send({
+      message: "Document file path can not be empty."
+    });
+  }
 
   // Find Document and update it with the request body
   Document.findByIdAndUpdate(req.params.documentId, {

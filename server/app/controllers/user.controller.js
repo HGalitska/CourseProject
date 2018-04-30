@@ -1,6 +1,7 @@
 const User = require('../models/user.model.js');
 
-function validateRequestData(req) {
+exports.create = (req, res) => {
+
   if (!req.body.username) {
     return res.status(400).send({
       message: "Username can not be empty."
@@ -18,11 +19,6 @@ function validateRequestData(req) {
       message: "Last name can not be empty."
     });
   }
-}
-
-exports.create = (req, res) => {
-
-  validateRequestData(req);
 
   const user = new User({
     username: req.body.username,
@@ -82,7 +78,23 @@ exports.findOne = (req, res) => {
 // Update a user identified by the userId in the request
 exports.update = (req, res) => {
 
-  validateRequestData(req);
+  if (!req.body.username) {
+    return res.status(400).send({
+      message: "Username can not be empty."
+    });
+  }
+
+  if (!req.body.password) {
+    return res.status(400).send({
+      message: "Password can not be empty."
+    });
+  }
+
+  if (!req.body.lastName) {
+    return res.status(400).send({
+      message: "Last name can not be empty."
+    });
+  }
 
   // Find user and update it with the request body
   User.findByIdAndUpdate(req.params.userId, {
