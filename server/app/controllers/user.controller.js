@@ -63,18 +63,18 @@ exports.findOne = (req, res) => {
     .then(user => {
       if (!user) {
         return res.status(404).send({
-          message: "User not found with id " + req.params.noteId
+          message: "User not found with id " + req.params.userId
         });
       }
       res.send(user);
     }).catch(err => {
       if (err.kind === 'ObjectId') {
         return res.status(404).send({
-          message: "User not found with id " + req.params.noteId
+          message: "User not found with id " + req.params.userId
         });
       }
       return res.status(500).send({
-        message: "Error retrieving user with id " + req.params.noteId
+        message: "Error retrieving user with id " + req.params.userId
       });
     });
 };
@@ -97,18 +97,18 @@ exports.update = (req, res) => {
     .then(user => {
       if (!user) {
         return res.status(404).send({
-          message: "User not found with id " + req.params.noteId
+          message: "User not found with id " + req.params.userId
         });
       }
       res.send(user);
     }).catch(err => {
       if (err.kind === 'ObjectId') {
         return res.status(404).send({
-          message: "User not found with id " + req.params.noteId
+          message: "User not found with id " + req.params.userId
         });
       }
       return res.status(500).send({
-        message: "Error updating user with id " + req.params.noteId
+        message: "Error updating user with id " + req.params.userId
       });
     });
 

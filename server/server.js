@@ -28,6 +28,7 @@ app.get('/', (req, res) => {
 
 // ---------------------------------------------------- API Routes
 require('./app/routes/user.routes.js')(app);
+require('./app/routes/document.routes.js')(app);
 
 // ---------------------------------------------------- Starting server
 app.listen(3000, () => {
