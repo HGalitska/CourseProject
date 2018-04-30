@@ -26,6 +26,9 @@ app.get('/', (req, res) => {
     res.json({"message": "Welcome to my application."});
 });
 
+// ---------------------------------------------------- API Routes
+require('./routes/user.routes.js')(app);
+
 // ---------------------------------------------------- Starting server
 app.listen(3000, () => {
     console.log(" ✨ Magic happens on port 3000! ✨ ");
