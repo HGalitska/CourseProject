@@ -8,7 +8,7 @@ exports.create = (req, res) => {
     });
   }
 
-  if (!req.body.students) {
+  if (!req.body.students || !req.body.students[0]) {
     return res.status(400).send({
       message: "Group can not be empty."
     });
@@ -75,7 +75,7 @@ exports.update = (req, res) => {
     });
   }
 
-  if (!req.body.students) {
+  if (!req.body.students || !req.body.students[0]) {
     return res.status(400).send({
       message: "Group can not be empty."
     });
