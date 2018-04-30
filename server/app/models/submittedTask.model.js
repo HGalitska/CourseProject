@@ -8,4 +8,4 @@ var submittedTaskSchema = new mongoose.Schema({
     docs          : [{ type: mongoose.Schema.ObjectId, ref: "Document" }]
 });
 
-module.exports = mongoose.model('SubmittedTask', completedTaskSchema);
+module.exports = mongoose.model('SubmittedTask', submittedTaskSchema);

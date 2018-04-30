@@ -33,6 +33,7 @@ require('./app/routes/course.routes.js')(app);
 require('./app/routes/group.routes.js')(app);
 require('./app/routes/lecture.routes.js')(app);
 require('./app/routes/task.routes.js')(app);
+require('./app/routes/submittedTask.routes.js')(app);
 
 // ---------------------------------------------------- Starting server
 app.listen(3000, () => {
