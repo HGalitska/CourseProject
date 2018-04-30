@@ -1,5 +1,6 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+const express     = require('express');
+const bodyParser  = require('body-parser');
+const mongoose    = require('mongoose');
 
 // ---------------------------------------------------- Creating express app
 const app = express();
@@ -9,7 +10,6 @@ app.use(bodyParser.json())
 
 // ---------------------------------------------------- Configuring the database
 const dbConfig = require('./config/database.config.js');
-const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 
