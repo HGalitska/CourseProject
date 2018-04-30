@@ -5,4 +5,4 @@ var groupSchema = new mongoose.Schema({
     students        : [{ type: mongoose.Schema.ObjectId, ref: "User" }]
 });
 
-module.exports = mongoose.model('Group', courseSchema);
+module.exports = mongoose.model('Group', groupSchema);
