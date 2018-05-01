@@ -81,7 +81,7 @@ app.post('/authenticate', (req, res) => {
       } else {
 
         const payload = {
-          user: user
+          user_id: user._id
         };
         var token = jwt.sign(payload, app.get('superSecret'));
 
