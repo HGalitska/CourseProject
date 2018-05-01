@@ -1,4 +1,6 @@
-const User = require('../models/user.model.js');
+const User      = require('../models/user.model.js');
+const bcrypt    = require('bcrypt')
+
 
 exports.create = (req, res) => {
 
@@ -96,10 +98,12 @@ exports.update = (req, res) => {
     });
   }
 
+  var hashedPassword = bcrypt.hashSync(req.body.password, 10);
+
   // Find user and update it with the request body
   User.findByIdAndUpdate(req.params.userId, {
       username: req.body.username,
-      password: req.body.password,
+      password: hashedPassword,
       firstName: req.body.firstName || "",
       lastName: req.body.lastName,
       eMail: req.body.eMail || ""
@@ -112,6 +116,8 @@ exports.update = (req, res) => {
           message: "User not found with id " + req.params.userId
         });
       }
+
+
       res.send(user);
     }).catch(err => {
       if (err.kind === 'ObjectId') {
