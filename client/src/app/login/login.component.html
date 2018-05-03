@@ -1,0 +1,9 @@
+<form #userlogin = "ngForm" (ngSubmit) = "login(userlogin.value)" >
+   <input type = "text" name = "username" placeholder = "username" ngModel>
+   <br/>
+   <input type = "password" name = "password" placeholder = "password" ngModel>
+   <br/>
+   <input type = "submit" value = "submit">
+</form>
+
+<button type="submit" (click)="show_me()"> Show </button>
