@@ -1,8 +1,10 @@
-module.exports = (app) => {
+module.exports = (app, checkJWT) => {
     const users = require('../controllers/user.controller.js');
 
     // Create a new User
     app.post('/users', users.create);
+
+    app.use(checkJWT);
 
     // Retrieve all Users
     app.get('/users', users.findAll);

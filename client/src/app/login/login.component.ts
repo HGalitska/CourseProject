@@ -19,16 +19,13 @@ export class LoginComponent {
       data => {
         localStorage.setItem("currentUserId", decode(data.token).user_id);
         localStorage.setItem("currentToken", data.token);
+
+        this.userService.show_user(localStorage.getItem("currentUserId"), localStorage.getItem("currentToken")).subscribe(
+          data => {
+            console.log(data);
+          }
+        )
       }
     );
-  }
-
-  show_me(): void {
-    this.userService.show_user(localStorage.getItem("currentUserId"), localStorage.getItem("currentToken")).subscribe(
-      data => {
-        console.log(data);
-      }
-    )
-
   }
 }

@@ -39,26 +39,6 @@ mongoose.connect(db.url)
 const secret = require('./config/secret.config.js').secret;
 app.set('superSecret', secret);
 
-// middleware to check jason web token
-const checkJWT = (req, res, next) => {
-  var token = req.body.token || req.query.token || req.headers['x-access-token'];
-
-  if (token) {
-    jwt.verify(token, app.get('superSecret'), function(err, decoded) {
-      if (err) {
-        return res.json({ success: false, message: 'Failed to authenticate token.' });
-      } else {
-        req.decoded = decoded;
-        next();
-      }
-    });
-  } else {
-    return res.status(403).send({
-        success: false,
-        message: 'No token provided.'
-    });
-  }}
-
 // ---------------------------------------------------- Basic Routes
 app.get('/', (req, res) => {
   res.json({
@@ -104,12 +84,31 @@ app.post('/authenticate', (req, res) => {
   });
 });
 
+// middleware to check jason web token
+const checkJWT = (req, res, next) => {
+  var token = req.body.token || req.query.token || req.headers['x-access-token'];
+
+  if (token) {
+    jwt.verify(token, app.get('superSecret'), function(err, decoded) {
+      if (err) {
+        return res.json({ success: false, message: 'Failed to authenticate token.' });
+      } else {
+        req.decoded = decoded;
+        next();
+      }
+    });
+  } else {
+    return res.status(403).send({
+        success: false,
+        message: 'No token provided.'
+    });
+  }}
+
 // ---------------------------------------------------- API Routes
 
-// middleware to verify a token before API routes
-app.use(checkJWT);
+require('./app/routes/user.routes.js')(app, checkJWT);
 
-require('./app/routes/user.routes.js')(app);
+app.use(checkJWT);
 require('./app/routes/document.routes.js')(app);
 require('./app/routes/course.routes.js')(app);
 require('./app/routes/group.routes.js')(app);

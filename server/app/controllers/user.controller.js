@@ -30,15 +30,24 @@ exports.create = (req, res) => {
     eMail: req.body.eMail || ""
   });
 
-  user.save()
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message: err.message || "Some error occurred while creating the User."
-      });
+  User.findOne({username : user.username}).then(sameUser => {
+    if (!sameUser) {
+      user.save()
+        .then(data => {
+          res.send(data);
+        })
+        .catch(err => {
+          res.status(500).send({
+            message: err.message || "Some error occurred while creating the User."
+          });
+        });
+    }
+    res.status(501).send({
+      message: "User already exists."
     });
+  })
+
+
 };
 
 // Retrieve and return all users from the database.
