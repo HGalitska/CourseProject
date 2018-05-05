@@ -12,20 +12,26 @@ import { UserService } from './login/user.service';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { AppRoutingModule } from './/app-routing.module';
+import { ProfileComponent } from './profile/profile.component';
+import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    ProfileComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
     HttpClientModule,
-    CoolStorageModule
+    CoolStorageModule,
+    AppRoutingModule
   ],
   providers: [LoginService, SignupService, UserService],
   bootstrap: [AppComponent]

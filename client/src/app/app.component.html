@@ -6,6 +6,7 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      <li><a routerLink="/about" routerLinkActive="active">About</a></li>
 
     </ul>
 
@@ -19,10 +20,6 @@
 
 <div class="container">
   <div class="jumbotron">
-    <h1 class="text-center">Be aware of your achievements anytime!</h1>
-    <p>Vivamus dignissim consectetur orci, at fermentum eros ultricies vel. Aliquam ipsum nulla, rutrum sed justo quis, posuere laoreet magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla cursus erat ut sem
-      dignissim, in pellentesque ante auctor. Pellentesque accumsan at neque et porttitor. Nunc felis leo, convallis et molestie sit amet, venenatis dictum nisl. Aenean lobortis ac arcu id blandit. Donec fringilla eros quis sapien lacinia, vel ultrices
-      enim feugiat. Nunc ultrices elit quis sagittis elementum. Mauris ullamcorper quis eros blandit finibus. Curabitur et posuere mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae ultricies eros, at pulvinar lacus.</p>
-    <app-signup></app-signup>
+    <router-outlet></router-outlet>
   </div>
 </div>
