@@ -16,14 +16,5 @@ export class AppComponent implements OnInit{
     }
 
     ngOnInit() {
-        this.localStorage.setItem('itemKey', 'itemValue');
-
-        console.log(this.localStorage.getItem('itemKey'));
-
-        this.localStorage.setObject('itemKey', {
-            someObject: 3
-        });
-
-        console.log(this.localStorage.getObject('itemKey'));
     }
 }

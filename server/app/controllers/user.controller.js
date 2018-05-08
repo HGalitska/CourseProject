@@ -1,5 +1,5 @@
-const User      = require('../models/user.model.js');
-const bcrypt    = require('bcrypt')
+const User = require('../models/user.model.js');
+const bcrypt = require('bcrypt')
 
 
 exports.create = (req, res) => {
@@ -30,24 +30,15 @@ exports.create = (req, res) => {
     eMail: req.body.eMail || ""
   });
 
-  User.findOne({username : user.username}).then(sameUser => {
-    if (!sameUser) {
-      user.save()
-        .then(data => {
-          res.send(data);
-        })
-        .catch(err => {
-          res.status(500).send({
-            message: err.message || "Some error occurred while creating the User."
-          });
-        });
-    }
-    res.status(501).send({
-      message: "User already exists."
+  user.save()
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: err.message || "Some error occurred while creating the User."
+      });
     });
-  })
-
-
 };
 
 // Retrieve and return all users from the database.

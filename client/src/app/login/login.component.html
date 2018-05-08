@@ -1,8 +1,7 @@
 <form class="form-inline my-2 my-lg-0" #userlogin="ngForm" (ngSubmit)="login(userlogin.value)">
   <input class="form-control mr-sm-2" type="text" name="username" placeholder="username" ngModel>
   <input class="form-control mr-sm-2" type="password" name="password" placeholder="password" ngModel>
-  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log In</button>
-  <div>
-    <button class="btn btn-outline-dark my-5 my-sm-0 " routerLink="/signup">Sign Up</button>
+  <div class="form-group">
+    <input type="button" class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Log In">
   </div>
 </form>

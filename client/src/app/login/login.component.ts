@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 import { LoginService } from './login.service';
 import { UserService } from './user.service';
+
 import * as decode from "jwt-decode";
 
 @Component({
@@ -11,7 +13,7 @@ import * as decode from "jwt-decode";
 })
 export class LoginComponent {
 
-  constructor(private loginService: LoginService, private userService: UserService) {
+  constructor(private router: Router, private loginService: LoginService, private userService: UserService) {
   }
 
   login(formData): void {
@@ -27,5 +29,7 @@ export class LoginComponent {
         )
       }
     );
+
+    this.router.navigate(['/profile']);
   }
 }

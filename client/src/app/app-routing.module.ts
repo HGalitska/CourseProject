@@ -9,7 +9,7 @@ import { AboutComponent } from './about/about.component';
 const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'about', component: AboutComponent },
+  { path: 'about', component: AboutComponent }
 ];
 
 @NgModule({

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from "@angular/router";
 
 import { SignupService } from './signup.service';
 import { LoginService } from '../login/login.service';
@@ -12,7 +13,7 @@ import * as decode from "jwt-decode";
 })
 export class SignupComponent {
 
-  constructor(private signupService: SignupService, private loginService: LoginService) {
+  constructor(private router: Router, private signupService: SignupService, private loginService: LoginService) {
   }
 
   signup(formData): void {
@@ -29,10 +30,10 @@ export class SignupComponent {
           data => {
             localStorage.setItem("currentUserId", decode(data.token).user_id);
             localStorage.setItem("currentToken", data.token);
-          };
-        )
-  };
-    );
-}
+          });
+      });
+
+      this.router.navigate(['/profile']);
+  }
 
 }
