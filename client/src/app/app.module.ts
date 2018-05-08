@@ -14,6 +14,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { ProfileComponent } from './profile/profile.component';
 import { AboutComponent } from './about/about.component';
 import { ProfileService } from './profile/profile.service';
+import { CoursesComponent } from './courses/courses.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ProfileService } from './profile/profile.service';
     LoginComponent,
     SignupComponent,
     ProfileComponent,
-    AboutComponent
+    AboutComponent,
+    CoursesComponent
   ],
   imports: [
     BrowserModule,

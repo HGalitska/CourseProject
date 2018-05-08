@@ -4,30 +4,12 @@
   <p>@{{ currentUser.username }}</p>
   <p>{{ currentUser.firstName }} {{ currentUser.lastName }}</p>
   <p>{{ currentUser.eMail }}</p>
-  <a href="/profile">Courses</a>
+  <a routerLink="courses">Courses</a>
   <a href="/profile">Progress</a>
   <a href="/profile">Settings</a>
 </div>
 
 <!-- Page content -->
 <div class="main">
-
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consequat tellus pellentesque felis feugiat luctus. Quisque venenatis dapibus nibh, id consectetur velit ultricies vestibulum. Sed a quam imperdiet, ullamcorper lectus vitae, ultrices turpis. Vivamus a pellentesque metus. Aenean sagittis venenatis elit non elementum. Nam hendrerit condimentum elit et imperdiet. In non sollicitudin eros. Quisque blandit metus ut mauris condimentum tempor. Curabitur at est metus. Duis justo tellus, pellentesque nec ante vitae, placerat placerat mi. Curabitur quis mauris rhoncus, laoreet odio vel, vulputate sem. Nulla venenatis faucibus tincidunt. Etiam ac sollicitudin lorem.
-
-  Donec vestibulum vitae enim eu sollicitudin. Nunc volutpat magna at purus fermentum placerat. Suspendisse varius, magna ac faucibus ullamcorper, odio felis volutpat tellus, at fermentum orci justo at neque. Integer velit erat, finibus a pulvinar sit amet, posuere a enim. Morbi efficitur bibendum tortor. Pellentesque et vestibulum tellus. Phasellus lacinia ullamcorper aliquet. Morbi non diam non nisi posuere maximus. Vivamus nunc tellus, feugiat sed est id, scelerisque egestas elit.
-
-  Suspendisse vel semper lacus. Cras non tortor non eros interdum pretium id non lectus. Nam cursus justo et condimentum fermentum. Morbi quis feugiat sem. Nullam a eros ut dolor congue consequat. Nullam eget ullamcorper ante. Cras mattis elementum diam, aliquet sodales neque dictum dapibus. Mauris nec lacus aliquam, varius felis vitae, sagittis augue. Maecenas consectetur metus et massa porta, eget commodo libero suscipit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam lectus est, ornare at vehicula in, bibendum sed magna. Donec sed venenatis massa.
-
-  Morbi aliquam volutpat elit ac volutpat. Morbi mattis, mauris ac imperdiet euismod, tellus dui tempor diam, non suscipit nibh enim eget lorem. Proin venenatis, ipsum sed placerat feugiat, augue nibh fermentum metus, et sodales mi mi nec nisl. Curabitur accumsan ullamcorper metus, eu sollicitudin magna pellentesque non. Nulla facilisi. Vivamus finibus sed lacus id euismod. Pellentesque finibus condimentum dui. Sed at vehicula nulla. Fusce ut metus nec augue tempor pulvinar quis nec ante. Vestibulum luctus augue vel lacus convallis, et lobortis enim pharetra. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-
-  In lacinia iaculis eros in iaculis. Integer porttitor sed mi vitae semper. Ut vitae dui justo. Nullam ac est viverra, faucibus diam vitae, dignissim nisl. Vestibulum nisi eros, sollicitudin at maximus vel, accumsan ut nisl. Fusce cursus ipsum quis lectus viverra, in auctor augue tristique. Proin luctus ornare odio, ac efficitur elit finibus a.
-
-  Nunc a varius lorem. In sed justo est. Phasellus sed sagittis dui. Morbi egestas ex quis ultrices ultricies. Nunc efficitur nibh sed sapien semper, eu fermentum metus ultrices. Pellentesque ultricies egestas placerat. Pellentesque dignissim ullamcorper erat id lobortis. Maecenas eget ex aliquet, pulvinar velit at, tristique lacus. In hac habitasse platea dictumst. Phasellus vestibulum odio ut erat sagittis, et interdum est tincidunt. Duis accumsan urna vel fermentum suscipit. Maecenas sapien justo, posuere vitae diam vitae, ultrices tempus eros. Nullam vitae nibh tincidunt, condimentum nibh ut, consequat orci.
-
-  Duis nisl ligula, tempus sit amet fringilla et, sollicitudin sit amet magna. Integer consequat enim nisi, eu facilisis sem vulputate et. Pellentesque ac erat molestie, lobortis urna ac, ultrices magna. Etiam nec urna sapien. Pellentesque vestibulum elit et metus consectetur, eu accumsan nibh interdum. Duis sit amet tortor ut felis tincidunt suscipit ac vel nisl. Duis sit amet euismod felis.
-
-  Duis eget vestibulum libero. Nam turpis quam, lacinia sit amet ex vitae, elementum euismod sem. Maecenas euismod dictum massa, sed mollis nunc convallis eget. Donec nec neque non nisi egestas semper. Nunc turpis lacus, congue a leo tristique, rhoncus auctor sapien. Aliquam porta ut nisl in suscipit. Maecenas sollicitudin ipsum quis massa pulvinar pretium. Ut eu dapibus libero, vestibulum hendrerit nibh.
-
-  Mauris aliquam fringilla sagittis. Morbi vitae arcu luctus, blandit velit ut, semper mauris. In aliquam ipsum id nunc rutrum, vel volutpat magna rutrum. Donec hendrerit nisi mauris, vitae placerat sapien ultrices a. Ut pulvinar, sem vitae placerat malesuada, turpis velit ullamcorper sem, ut vulputate lorem elit nec urna. Pellentesque ultricies a diam eu feugiat. Donec gravida, diam eu fermentum vulputate, est libero aliquam odio, nec mattis lacus odio ut eros. Mauris consectetur tristique orci, bibendum volutpat lacus feugiat nec. Aenean eget faucibus quam. Praesent rutrum consequat porttitor. Curabitur lorem libero, ultricies sit amet ipsum id, ornare vehicula sapien. Suspendisse porttitor viverra turpis, ut hendrerit ipsum lobortis id. Mauris eget varius metus.</p>
-
+  <router-outlet></router-outlet>
 </div>
