@@ -6,7 +6,7 @@
     z-index: 1; /* Stay on top */
     top: 50px; /* Stay at the top */
     left: 0;
-    background-color: #253; /* Black */
+    background-color: #f6546a;
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 20px;
 }
@@ -27,8 +27,12 @@
 
 /* Style page content */
 .main {
-    margin-left: 160px; /* Same as the width of the sidebar */
+    margin-top: 70px;
+    margin-left: 250px; /* Same as the width of the sidebar */
+    margin-right: 50px;
     padding: 0px 10px;
+    height: 500px;
+    max-height: 100%;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
@@ -36,8 +40,6 @@
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
-
-
 
 .avatar {
     vertical-align: middle;

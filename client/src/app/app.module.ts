@@ -18,6 +18,9 @@ import { CoursesComponent } from './courses/courses.component';
 import { ProgressComponent } from './progress/progress.component';
 import { SettingsComponent } from './settings/settings.component';
 import { LogoutComponent } from './logout/logout.component';
+import { PlainnavbarComponent } from './plainnavbar/plainnavbar.component';
+import { LoginnavbarComponent } from './loginnavbar/loginnavbar.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -30,7 +33,10 @@ import { LogoutComponent } from './logout/logout.component';
     CoursesComponent,
     ProgressComponent,
     SettingsComponent,
-    LogoutComponent
+    LogoutComponent,
+    PlainnavbarComponent,
+    LoginnavbarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,7 @@ import { CoursesComponent } from './courses/courses.component';
 import { ProgressComponent } from './progress/progress.component';
 import { SettingsComponent } from './settings/settings.component';
 import { LogoutComponent } from './logout/logout.component';
-
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
@@ -20,8 +20,12 @@ const routes: Routes = [
       { path: 'logout', component: LogoutComponent}
     ]
   },
-  { path: 'signup', component: SignupComponent },
-  { path: 'about', component: AboutComponent }
+  { path: '', component: HomeComponent,
+    children: [
+      { path: 'signup', component: SignupComponent },
+      { path: 'about', component: AboutComponent },
+      { path: '', component: AboutComponent }
+    ]},
 ];
 
 @NgModule({
