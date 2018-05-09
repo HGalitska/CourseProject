@@ -12,6 +12,7 @@ module.exports = (app) => {
 
     // Update a Group with groupId
     app.put('/groups/:groupId', groups.update);
+    // app.put('/groups_update', groups.updateAll);
 
     // Delete a Group with groupId
     app.delete('/groups/:groupId', groups.delete);
