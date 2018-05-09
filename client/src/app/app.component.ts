@@ -8,6 +8,8 @@ import { CoolLocalStorage } from 'angular2-cool-storage';
 })
 export class AppComponent implements OnInit{
   localStorage: CoolLocalStorage;
+  localStorage.currentToken = ""
+  localStorage.currentUserId = ""
 
   title = 'app';
 

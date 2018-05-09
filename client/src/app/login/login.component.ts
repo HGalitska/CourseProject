@@ -20,8 +20,8 @@ export class LoginComponent {
       data => {
         localStorage.setItem("currentUserId", decode(data.token).user_id);
         localStorage.setItem("currentToken", data.token);
-      });
 
-    this.router.navigate(['/profile']);
+        this.router.navigate(['/profile']);
+      });
   }
 }
