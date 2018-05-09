@@ -132,6 +132,40 @@ exports.update = (req, res) => {
 
 };
 
+// Update all users *for batch imports*
+exports.updateAll = (req, res) => {
+
+  User.find()
+    .then(users => {
+      for (var i = 0; i < users.length; i++) {
+        var hash = bcrypt.hashSync("password", bcrypt.genSaltSync(10));
+        User.findOneAndUpdate({
+          _id: users[i]._id
+        }, {
+          $set: {
+            password: hash
+          }
+        }, function(err, doc) {
+          if (err) {
+            console.log("Something wrong when updating data!");
+          }
+
+          console.log(doc);
+        });
+      }
+
+      res.send({
+        message: "Updated all users."
+      })
+    })
+    .catch(err => {
+      res.status(500)
+        .send({
+          message: err.message || "Some error occurred while retrieving users."
+        });
+    });
+};
+
 // Delete a user with the specified userId in the request
 exports.delete = (req, res) => {
   User.findByIdAndRemove(req.params.userId)
