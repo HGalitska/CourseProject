@@ -15,6 +15,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { AboutComponent } from './about/about.component';
 import { ProfileService } from './profile/profile.service';
 import { CoursesComponent } from './courses/courses.component';
+import { ProgressComponent } from './progress/progress.component';
+import { SettingsComponent } from './settings/settings.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
@@ -24,7 +27,10 @@ import { CoursesComponent } from './courses/courses.component';
     SignupComponent,
     ProfileComponent,
     AboutComponent,
-    CoursesComponent
+    CoursesComponent,
+    ProgressComponent,
+    SettingsComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
