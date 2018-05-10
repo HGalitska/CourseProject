@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CoursesService } from './courses.service';
+import { GroupsService } from './groups.service';
 
 @Component({
   selector: 'app-courses',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoursesComponent implements OnInit {
 
-  constructor() { }
+  courses = []
+
+  constructor(private coursesService: CoursesService, private groupsService: GroupsService,) { }
 
   ngOnInit() {
+
+    this.groupsService.getGroup(localStorage.getItem("currentUserId"), localStorage.getItem("currentToken")).subscribe(
+      data => {
+        this.coursesService.getCourses(data._id, localStorage.getItem("currentToken")).subscribe(
+          data => {
+            this.courses = data;
+          })
+      })
   }
+
 
 }

@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CoolStorageModule } from 'angular2-cool-storage';
 import { FormsModule } from '@angular/forms';
 
+import { CoursesService } from './courses/courses.service';
+import { GroupsService } from './courses/groups.service';
 import { LoginService } from './login/login.service';
 import { SignupService } from './signup/signup.service';
 import { AppComponent } from './app.component';
@@ -46,7 +48,7 @@ import { HomeComponent } from './home/home.component';
     CoolStorageModule,
     AppRoutingModule
   ],
-  providers: [LoginService, SignupService, ProfileService],
+  providers: [LoginService, SignupService, ProfileService, CoursesService, GroupsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
