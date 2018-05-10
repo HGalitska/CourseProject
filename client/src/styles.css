@@ -1,9 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
-.navbar {
-  height: 50px;
-  top: 0;
-  position: fixed;
-  width: 100%;
-  background-color: #f6546a;
+body {
+  font-family: "Avenir Next", ultralight;
+  /* font-family: "Poiret One"; */
 }

@@ -1,0 +1,7 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">{{ course.name }}</h4>
+    <p class="card-text">Owner: </p>
+    <p class="card-text">Progress: </p>
+    <button [routerLink]="['../course', course._id]" class="btn btn-success">Open</button>
+  </div>

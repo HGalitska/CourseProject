@@ -9,6 +9,7 @@ import { ProgressComponent } from './progress/progress.component';
 import { SettingsComponent } from './settings/settings.component';
 import { LogoutComponent } from './logout/logout.component';
 import { HomeComponent } from './home/home.component';
+import { CoursePageComponent } from './course-page/course-page.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,8 @@ const routes: Routes = [
       { path: 'courses', component: CoursesComponent},
       { path: 'progress', component: ProgressComponent},
       { path: 'settings', component: SettingsComponent},
-      { path: 'logout', component: LogoutComponent}
+      { path: 'logout', component: LogoutComponent},
+      { path: 'course/:id', component: CoursePageComponent}
     ]
   },
   { path: '', component: HomeComponent,

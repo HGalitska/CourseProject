@@ -23,6 +23,8 @@ import { LogoutComponent } from './logout/logout.component';
 import { PlainnavbarComponent } from './plainnavbar/plainnavbar.component';
 import { LoginnavbarComponent } from './loginnavbar/loginnavbar.component';
 import { HomeComponent } from './home/home.component';
+import { CourseComponent } from './course/course.component';
+import { CoursePageComponent } from './course-page/course-page.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { HomeComponent } from './home/home.component';
     LogoutComponent,
     PlainnavbarComponent,
     LoginnavbarComponent,
-    HomeComponent
+    HomeComponent,
+    CourseComponent,
+    CoursePageComponent
   ],
   imports: [
     BrowserModule,
