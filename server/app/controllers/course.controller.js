@@ -48,6 +48,33 @@ exports.findAll = (req, res) => {
     });
 };
 
+exports.findForGroup = (req, res) => {
+  const groupId = req.params.groupId;
+  var result = []
+
+  Course.find()
+    .then(courses => {
+      for (var i = 0; i < courses.length; i++){
+        var course = courses[i];
+        for (var j = 0; j < course.members.length; j++) {
+          var memberId = course.members[j];
+
+          if (memberId == groupId && !result.includes(course)) {
+            result.push(course);
+          }
+        }
+      }
+
+      res.send(result);
+    })
+    .catch(err => {
+      res.status(500)
+        .send({
+          message: err.message || "Some error occurred while retrieving groups."
+        });
+    });
+};
+
 // Find a single Course with a courseId
 exports.findOne = (req, res) => {
   Course.findById(req.params.courseId)

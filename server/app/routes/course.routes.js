@@ -6,6 +6,8 @@ module.exports = (app) => {
 
     // Retrieve all Courses
     app.get('/courses', courses.findAll);
+    // Get Course which constains group with groupId
+    app.get('/courses/:groupId', courses.findForGroup);
 
     // Retrieve a single Course with courseId
     app.get('/courses/:courseId', courses.findOne);

@@ -14,7 +14,7 @@ module.exports = (app, checkJWT) => {
 
     // Update a User with userId
     app.put('/users/:userId', users.update);
-    app.put('/users_update', users.updateAll);
+    // app.put('/users_update', users.updateAll);
 
     // Delete a User with userId
     app.delete('/users/:userId', users.delete);
