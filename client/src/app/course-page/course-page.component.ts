@@ -8,16 +8,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CoursePageComponent implements OnInit {
 
-  courseId : string;
-  private sub: any;
+  course : string;
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-       this.courseId = params['id']; // (+) converts string 'id' to a number
-
-       // In a real app: dispatch action to load the details here.
+    this.route.params.subscribe(params => {
+       this.course = params.course_id;
     });
   }
 

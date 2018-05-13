@@ -11,7 +11,7 @@ export class CoursesService {
   }
 
   getCourses(groupId: string, token: string): Observable<any> {
-    return this.http.get('http://localhost:3000/courses/' + groupId, {
+    return this.http.get('http://localhost:3000/courses/group/' + groupId, {
       headers: { 'x-access-token': token }});
   }
 }

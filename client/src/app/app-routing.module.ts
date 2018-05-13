@@ -15,18 +15,18 @@ const routes: Routes = [
   {
     path: 'profile', component: ProfileComponent,
     children: [
-      { path: 'courses', component: CoursesComponent},
+      { path: 'courses',  component: CoursesComponent},
+      { path: 'course/:course_id',   component: CoursePageComponent},
       { path: 'progress', component: ProgressComponent},
       { path: 'settings', component: SettingsComponent},
-      { path: 'logout', component: LogoutComponent},
-      { path: 'course/:id', component: CoursePageComponent}
+      { path: 'logout',   component: LogoutComponent}
     ]
   },
-  { path: '', component: HomeComponent,
+  { path: '',       component: HomeComponent,
     children: [
       { path: 'signup', component: SignupComponent },
-      { path: 'about', component: AboutComponent },
-      { path: '', component: AboutComponent }
+      { path: 'about',  component: AboutComponent },
+      { path: '',       component: AboutComponent }
     ]},
 ];
 
