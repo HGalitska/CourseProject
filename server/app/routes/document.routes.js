@@ -1,8 +1,8 @@
-module.exports = (app) => {
+module.exports = (app, upload) => {
     const documents = require('../controllers/document.controller.js');
 
     // Create a new Document
-    app.post('/documents', documents.create);
+    app.post('/documents', upload.single('document'), documents.create);
 
     // Retrieve all Documents
     app.get('/documents', documents.findAll);

@@ -5,6 +5,17 @@ const morgan      = require('morgan');
 const jwt         = require('jsonwebtoken');
 const cors        = require('cors');
 
+const multer      = require('multer')
+var storage       = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, 'uploads/')
+    },
+    filename: (req, file, cb) => {
+      cb(null, file.fieldname + '-' + Date.now())
+    }
+});
+const upload      = multer({storage: storage});
+
 const User        = require('./app/models/user.model.js');
 
 // ---------------------------------------------------- Creating express app
@@ -111,7 +122,7 @@ const checkJWT = (req, res, next) => {
 require('./app/routes/user.routes.js')(app, checkJWT);
 
 app.use(checkJWT);
-require('./app/routes/document.routes.js')(app);
+require('./app/routes/document.routes.js')(app, upload);
 require('./app/routes/course.routes.js')(app);
 require('./app/routes/group.routes.js')(app);
 require('./app/routes/lecture.routes.js')(app);

@@ -9,15 +9,9 @@ exports.create = (req, res) => {
     });
   }
 
-  if (!req.body.filePath) {
-    return res.status(400).send({
-      message: "Document file path can not be empty."
-    });
-  }
-
   const document = new Document({
     title: req.body.title,
-    filePath: req.body.filePath
+    filePath: req.file.filename
   });
 
   document.save()
@@ -76,16 +70,10 @@ exports.update = (req, res) => {
     });
   }
 
-  if (!req.body.filePath) {
-    return res.status(400).send({
-      message: "Document file path can not be empty."
-    });
-  }
-
   // Find Document and update it with the request body
   Document.findByIdAndUpdate(req.params.documentId, {
       title: req.body.title,
-      filePath: req.body.filePath
+      filePath: req.body.filePath || ""
     }, {
       new: true
     })
