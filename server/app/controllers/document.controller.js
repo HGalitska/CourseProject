@@ -3,14 +3,8 @@ const Document = require('../models/Document.model.js');
 
 exports.create = (req, res) => {
 
-  if (!req.body.title) {
-    return res.status(400).send({
-      message: "Document title can not be empty."
-    });
-  }
-
   const document = new Document({
-    title: req.body.title,
+    title: req.file.formData.title || " ",
     filePath: req.file.filename
   });
 

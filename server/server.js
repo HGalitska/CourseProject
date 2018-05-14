@@ -119,10 +119,10 @@ const checkJWT = (req, res, next) => {
 
 // ---------------------------------------------------- API Routes
 
+require('./app/routes/document.routes.js')(app, upload);
 require('./app/routes/user.routes.js')(app, checkJWT);
 
 app.use(checkJWT);
-require('./app/routes/document.routes.js')(app, upload);
 require('./app/routes/course.routes.js')(app);
 require('./app/routes/group.routes.js')(app);
 require('./app/routes/lecture.routes.js')(app);

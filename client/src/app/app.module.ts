@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { CoolStorageModule } from 'angular2-cool-storage';
 import { FormsModule } from '@angular/forms';
+import { FileSelectDirective } from 'ng2-file-upload';
 
 import { UsersService } from './services/users.service';
 import { CoursesService } from './courses/courses.service';
@@ -26,6 +27,7 @@ import { LoginnavbarComponent } from './loginnavbar/loginnavbar.component';
 import { HomeComponent } from './home/home.component';
 import { CourseComponent } from './course/course.component';
 import { CoursePageComponent } from './course-page/course-page.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { CoursePageComponent } from './course-page/course-page.component';
     LoginnavbarComponent,
     HomeComponent,
     CourseComponent,
-    CoursePageComponent
+    CoursePageComponent,
+    FileUploadComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,
