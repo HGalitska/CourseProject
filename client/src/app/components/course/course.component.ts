@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { UsersService } from "../services/users.service"
+import { UsersService } from "../../services/users.service"
 import { Router } from "@angular/router"
 
 @Component({
@@ -26,7 +26,7 @@ export class CourseComponent implements OnInit {
   }
 
   openCoursePage() {
-    this.router.navigate(['/profile/course', this.course_id])
+    this.router.navigate(['/profile/course', this.course_id, this.owner_id])
   }
 
 }
