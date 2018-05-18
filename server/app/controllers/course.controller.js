@@ -18,7 +18,7 @@ exports.create = (req, res) => {
     owner_id: req.body.owner_id,
     name: req.body.name,
     description: req.body.description,
-    lectures: req.body.lectures || [],
+    docs: req.body.docs || [],
     tasks: req.body.tasks || [],
     members: req.body.members || []
   });
@@ -44,33 +44,6 @@ exports.findAll = (req, res) => {
       res.status(500)
         .send({
           message: err.message || "Some error occurred while retrieving courses."
-        });
-    });
-};
-
-exports.findForGroup = (req, res) => {
-  const groupId = req.params.groupId;
-  var result = []
-
-  Course.find()
-    .then(courses => {
-      for (var i = 0; i < courses.length; i++){
-        var course = courses[i];
-        for (var j = 0; j < course.members.length; j++) {
-          var memberId = course.members[j];
-
-          if (memberId == groupId && !result.includes(course)) {
-            result.push(course);
-          }
-        }
-      }
-
-      res.send(result);
-    })
-    .catch(err => {
-      res.status(500)
-        .send({
-          message: err.message || "Some error occurred while retrieving groups."
         });
     });
 };
@@ -117,7 +90,7 @@ exports.update = (req, res) => {
       owner_id: req.body.owner_id,
       name: req.body.name,
       description: req.body.description,
-      lectures: req.body.lectures || [],
+      docs: req.body.docs  || [],
       tasks: req.body.tasks || [],
       members: req.body.members || []
     }, {

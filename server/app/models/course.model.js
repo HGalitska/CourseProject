@@ -4,7 +4,7 @@ var courseSchema = new mongoose.Schema({
     owner_id        : { type: mongoose.Schema.ObjectId, ref: "User" },
     name            : String,
     description     : String,
-    lectures        : [{ type: mongoose.Schema.ObjectId, ref: "Lecture" }],
+    docs            : [{ type: mongoose.Schema.ObjectId, ref: "Document" }],
     tasks           : [{ type: mongoose.Schema.ObjectId, ref: "Task" }],
     members         : [{ type: mongoose.Schema.ObjectId, ref: "Group" }]
 });

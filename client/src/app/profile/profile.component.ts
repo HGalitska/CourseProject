@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfileService } from './profile.service';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,11 +10,12 @@ export class ProfileComponent implements OnInit {
 
   currentUser = {}
 
-  constructor(private profileService : ProfileService) {
+  constructor(private usersService : UsersService) {
   }
 
   ngOnInit() {
-    this.profileService.getUser(localStorage.getItem("currentUserId"), localStorage.getItem("currentToken")).subscribe(
+    this.usersService.getUserById(localStorage.getItem("currentUserId"),
+    localStorage.getItem("currentToken")).subscribe(
       data => {
         this.currentUser = data;
       })

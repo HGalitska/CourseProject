@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CoursesService } from '../services/courses.service'
 
 @Component({
   selector: 'app-course-page',
@@ -8,14 +9,20 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CoursePageComponent implements OnInit {
 
-  course : string;
+  courseId : string;
+  course : {};
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private coursesService : CoursesService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-       this.course = params.course_id;
+       this.courseId = params.course_id;
     });
+
+    this.coursesService.getCourseById(courseId, localStorage.getItem("currentToken")).subscribe(
+      data => {
+        this.course = data;
+      })
   }
 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 
-import { LoginService } from './login.service';
+import { AuthenticationService } from '../services/authentication.service';
 
 import * as decode from "jwt-decode";
 
@@ -12,11 +12,11 @@ import * as decode from "jwt-decode";
 })
 export class LoginComponent {
 
-  constructor(private router: Router, private loginService: LoginService) {
+  constructor(private router: Router, private authenticationService: AuthenticationService) {
   }
 
   login(formData): void {
-    this.loginService.attemptAuth(formData.username, formData.password).subscribe(
+    this.authenticationService.attemptAuth(formData.username, formData.password).subscribe(
       data => {
         localStorage.setItem("currentUserId", decode(data.token).user_id);
         localStorage.setItem("currentToken", data.token);

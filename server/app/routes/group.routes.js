@@ -6,11 +6,8 @@ module.exports = (app) => {
 
     // Retrieve all Groups
     app.get('/groups', groups.findAll);
-    
-    // Get Group which constains user with userId
-    app.get('/groups/:userId', groups.findForUser);
 
-    // Retrieve a single Group with groupId
+        // Retrieve a single Group with groupId
     app.get('/groups/:groupId', groups.findOne);
 
     // Update a Group with groupId

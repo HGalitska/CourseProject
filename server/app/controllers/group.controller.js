@@ -45,32 +45,6 @@ exports.findAll = (req, res) => {
     });
 };
 
-exports.findForUser = (req, res) => {
-  const userId = req.params.userId;
-
-  Group.find()
-    .then(groups => {
-      for (var i = 0; i < groups.length; i++){
-        var group = groups[i];
-        for (var j = 0; j < group.students.length; j++) {
-          var studentId = group.students[j];
-          console.log(userId);
-          console.log(studentId);
-
-          if (studentId == userId) {
-            res.send(group);
-          }
-        }
-      }
-    })
-    .catch(err => {
-      res.status(500)
-        .send({
-          message: err.message || "Some error occurred while retrieving groups."
-        });
-    });
-};
-
 // Find a single Group with a groupId
 exports.findOne = (req, res) => {
   Group.findById(req.params.groupId)
