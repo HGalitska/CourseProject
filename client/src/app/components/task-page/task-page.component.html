@@ -3,4 +3,7 @@
 <p *ngIf="task" >{{ task.description }}</p>
 <p *ngIf="task" >{{ task.deadline | date:'dd MMMM yyyy' }}</p>
 
-<p *ngIf="task" >{{ task.docs }}</p>
+<p>Documents for this task:</p>
+<app-doc-tile *ngFor="let doc of documents" [doc]="doc"></app-doc-tile>
+
+<!--TODO: back to course button-->

@@ -11,6 +11,8 @@ import {CoursesService} from './services/courses.service';
 import {GroupsService} from './services/groups.service';
 import {AuthenticationService} from './services/authentication.service';
 import {TasksService} from './services/tasks.service';
+import {DocumentsService} from './services/documents.service';
+
 
 
 import {AppComponent} from './app.component';
@@ -28,10 +30,10 @@ import {LoginnavbarComponent} from './components/loginnavbar/loginnavbar.compone
 import {HomeComponent} from './components/home/home.component';
 import {CourseComponent} from './components/course-tile/course.component';
 import {CoursePageComponent} from './components/course-page/course-page.component';
-import {FileUploadComponent} from './components/file-upload/file-upload.component';
 import {TaskTileComponent} from './components/task-tile/task-tile.component';
 import { TaskPageComponent } from './components/task-page/task-page.component';
 import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
+import { DocTileComponent } from './components/doc-tile/doc-tile.component';
 
 @NgModule({
   declarations: [
@@ -49,11 +51,11 @@ import { FileUploaderComponent } from './components/file-uploader/file-uploader.
     HomeComponent,
     CourseComponent,
     CoursePageComponent,
-    FileUploadComponent,
     FileSelectDirective,
     TaskTileComponent,
     TaskPageComponent,
-    FileUploaderComponent
+    FileUploaderComponent,
+    DocTileComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +65,7 @@ import { FileUploaderComponent } from './components/file-uploader/file-uploader.
     CoolStorageModule,
     AppRoutingModule
   ],
-  providers: [AuthenticationService, CoursesService, GroupsService, UsersService, TasksService],
+  providers: [AuthenticationService, CoursesService, GroupsService, UsersService, TasksService, DocumentsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
