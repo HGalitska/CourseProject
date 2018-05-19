@@ -1,0 +1,7 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">{{ submittedTask.date  | date:'dd MMMM yyyy'}}</h4>
+    <p class="card-text" >Mark: {{ mark }} </p>
+    <app-doc-tile *ngFor="let doc of documents" [doc]="doc"></app-doc-tile>
+  </div>
+</div>

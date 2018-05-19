@@ -12,3 +12,7 @@
 
 <h4>Upload Completed Task:</h4>
 <app-file-uploader [type]="'submitted'" [task_id]="taskId" [user_id]="currentUser"></app-file-uploader>
+
+
+<h4> My Submits: </h4>
+<app-submitted-tile *ngFor="let attempt of attempts" [submittedTask]="attempt"></app-submitted-tile>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {TasksService} from "../../services/tasks.service";
 import {DocumentsService} from "../../services/documents.service";
+import {SubmittedTasksService} from "../../services/submitted-tasks.service";
 
 
 @Component({
@@ -15,9 +16,11 @@ export class TaskPageComponent implements OnInit {
   task: Object;
   documents = [];
   currentUser;
+  attempts=[];
 
   constructor(private route: ActivatedRoute,
-              private tasksService: TasksService, private documentsService: DocumentsService) { }
+              private tasksService: TasksService, private documentsService: DocumentsService,
+              private submittedTasksService : SubmittedTasksService) { }
 
   ngOnInit() {
     this.currentUser = localStorage.getItem("currentUserId");
@@ -38,6 +41,17 @@ export class TaskPageComponent implements OnInit {
 
       }
     )
+
+    this.submittedTasksService.getAllSubmittedTasks(localStorage.getItem("currentToken")).subscribe(
+      data => {
+        for (var i = 0; i < data.length; i++) {
+          if (data[i].task_id == this.taskId && data[i].student_id == this.currentUser) {
+            this.attempts.push(data[i]);
+          }
+        }
+      }
+    )
+
   }
 
 }

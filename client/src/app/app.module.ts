@@ -36,6 +36,7 @@ import {TaskTileComponent} from './components/task-tile/task-tile.component';
 import { TaskPageComponent } from './components/task-page/task-page.component';
 import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
 import { DocTileComponent } from './components/doc-tile/doc-tile.component';
+import { SubmittedTileComponent } from './components/submitted-tile/submitted-tile.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { DocTileComponent } from './components/doc-tile/doc-tile.component';
     TaskTileComponent,
     TaskPageComponent,
     FileUploaderComponent,
-    DocTileComponent
+    DocTileComponent,
+    SubmittedTileComponent
   ],
   imports: [
     BrowserModule,

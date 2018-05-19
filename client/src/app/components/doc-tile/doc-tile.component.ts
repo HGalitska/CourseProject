@@ -19,7 +19,7 @@ export class DocTileComponent implements OnInit {
   downloadFile() {
     console.log(this.doc);
     console.log("downloaded");
-    
+
     window.open("http://localhost:3000/uploads/" + this.doc.filePath, "_blank");
   }
 
