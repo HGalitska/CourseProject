@@ -14,11 +14,13 @@ export class TaskPageComponent implements OnInit {
   taskId: string;
   task: Object;
   documents = [];
+  currentUser;
 
   constructor(private route: ActivatedRoute,
               private tasksService: TasksService, private documentsService: DocumentsService) { }
 
   ngOnInit() {
+    this.currentUser = localStorage.getItem("currentUserId");
     this.route.params.subscribe(params => {
       this.taskId = params.task_id;
     });

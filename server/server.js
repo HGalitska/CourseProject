@@ -22,6 +22,8 @@ const User = require('./app/models/user.model.js');
 // ---------------------------------------------------- Creating express app
 const app = express();
 
+app.set('json spaces', 40);
+
 app.use(cors());
 
 app.use(bodyParser.urlencoded({

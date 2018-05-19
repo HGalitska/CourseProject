@@ -12,6 +12,8 @@ import {GroupsService} from './services/groups.service';
 import {AuthenticationService} from './services/authentication.service';
 import {TasksService} from './services/tasks.service';
 import {DocumentsService} from './services/documents.service';
+import {SubmittedTasksService} from './services/submitted-tasks.service';
+
 
 
 
@@ -65,7 +67,7 @@ import { DocTileComponent } from './components/doc-tile/doc-tile.component';
     CoolStorageModule,
     AppRoutingModule
   ],
-  providers: [AuthenticationService, CoursesService, GroupsService, UsersService, TasksService, DocumentsService],
+  providers: [AuthenticationService, CoursesService, GroupsService, UsersService, TasksService, DocumentsService, SubmittedTasksService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -10,7 +10,7 @@ export class DocumentsService {
   constructor(private http: HttpClient) {
   }
 
-  addNewDocument(newDocument: any): Observable<any> {
+  addNewDocument(newDocument: any, token: string): Observable<any> {
     return this.http.post(this.url, newDocument);
   }
 

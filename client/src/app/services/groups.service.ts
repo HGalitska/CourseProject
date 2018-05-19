@@ -10,7 +10,7 @@ export class GroupsService {
   constructor(private http: HttpClient) {
   }
 
-  addNewGroup(newGroup: any): Observable<any> {
+  addNewGroup(newGroup: any, token: string): Observable<any> {
     return this.http.post(this.url, newGroup);
   }
 

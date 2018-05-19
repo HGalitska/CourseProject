@@ -7,3 +7,8 @@
 <app-doc-tile *ngFor="let doc of documents" [doc]="doc"></app-doc-tile>
 
 <!--TODO: back to course button-->
+
+
+
+<h4>Upload Completed Task:</h4>
+<app-file-uploader [type]="'submitted'" [task_id]="taskId" [user_id]="currentUser"></app-file-uploader>

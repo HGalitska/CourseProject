@@ -10,7 +10,7 @@ export class CoursesService {
   constructor(private http: HttpClient) {
   }
 
-  addNewCourse(newCourse: any): Observable<any> {
+  addNewCourse(newCourse: any, token: string): Observable<any> {
     return this.http.post(this.url, newCourse);
   }
 
@@ -24,8 +24,10 @@ export class CoursesService {
       headers: { 'x-access-token': token }}))
   }
 
-  updateCourseById(id: string, token: string, updatedCourse: any): Observable<any> {
-    return (this.http.put(this.url + id, updatedCourse, {
+  updateCourseById(courseId: string, token: string, updatedCourse: any): Observable<any> {
+    console.log(this.url + courseId);
+
+    return (this.http.put(this.url + courseId, updatedCourse, {
       headers: { 'x-access-token': token }}))
   }
 

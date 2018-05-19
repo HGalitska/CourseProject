@@ -1,8 +1,10 @@
 const Document = require('../models/Document.model.js');
+const db = require('../../config/database.config.js');
 
 
 exports.create = (req, res) => {
     const files = req.files;
+    arr = [];
 
     for (var i = 0; i < files.length; i++) {
 
@@ -11,16 +13,15 @@ exports.create = (req, res) => {
             filePath: files[i].filename
         });
 
-        document.save()
-            .then(data => {
-                res.send(data);
-            })
-            .catch(err => {
-                res.status(500).send({
-                    message: err.message || "Some error occurred while creating the document."
-                });
-            });
+        arr.push(document);
     }
+
+
+    var promise = Document.insertMany(arr);
+    console.log(promise);
+    promise.then(function(doc) {
+        res.send(doc);
+    })
 };
 
 // Retrieve and return all Documents from the database.

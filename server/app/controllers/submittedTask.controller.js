@@ -20,11 +20,11 @@ exports.create = (req, res) => {
     });
   }
 
-  if (!req.body.docs || !req.body.docs[0]) {
-    return res.status(400).send({
-      message: "SubmittedTask can not be empty."
-    });
-  }
+  // if (!req.body.docs || !req.body.docs[0]) {
+  //   return res.status(400).send({
+  //     message: "SubmittedTask can not be empty."
+  //   });
+  // }
 
   const submittedTask = new SubmittedTask({
     task_id       : req.body.task_id,

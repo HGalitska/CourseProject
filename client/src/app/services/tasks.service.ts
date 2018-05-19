@@ -10,7 +10,7 @@ export class TasksService {
   constructor(private http: HttpClient) {
   }
 
-  addNewTask(newTask: any): Observable<any> {
+  addNewTask(newTask: any, token: string): Observable<any> {
     return this.http.post(this.url, newTask);
   }
 

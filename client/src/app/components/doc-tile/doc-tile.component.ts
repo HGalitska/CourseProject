@@ -19,15 +19,8 @@ export class DocTileComponent implements OnInit {
   downloadFile() {
     console.log(this.doc);
     console.log("downloaded");
-
-    location.href = "";
+    
     window.open("http://localhost:3000/uploads/" + this.doc.filePath, "_blank");
-
-    // http://localhost:3000/uploads/Info.pdf-1526722019313
-
-    // let b:any = new Blob([this.doc], { type: 'application/pdf' });
-    // var url= window.URL.createObjectURL(b);
-    // window.open(url);
   }
 
 }
