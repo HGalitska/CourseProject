@@ -15,7 +15,6 @@ export class CoursePageComponent implements OnInit {
   ownerId: string;
   course: Object;
   owner: Object;
-  members;
 
   constructor(private route: ActivatedRoute, private coursesService: CoursesService,
               private groupsService: GroupsService, private usersService: UsersService) {
@@ -30,10 +29,6 @@ export class CoursePageComponent implements OnInit {
       data => {
         this.course = data;
         this.ownerId = data.owner_id;
-        this.members = [];
-        for (var i = 0; i < data.members.length; i++) {
-          this.members.push(data.members[i]);
-        }
         this.usersService.getUserById(this.ownerId, localStorage.getItem("currentToken")).subscribe(
           data => {
             this.owner = data;

@@ -33,10 +33,4 @@ export class GroupsService {
     return (this.http.delete(this.url + id, {
       headers: { 'x-access-token': token }}))
   }
-
-
-  getGroupForUser(userId: string, token: string): Observable<any> {
-    return this.http.get('http://localhost:3000/groups/' + userId, {
-      headers: { 'x-access-token': token }});
-  }
 }

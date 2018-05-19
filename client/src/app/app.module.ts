@@ -10,6 +10,8 @@ import {UsersService} from './services/users.service';
 import {CoursesService} from './services/courses.service';
 import {GroupsService} from './services/groups.service';
 import {AuthenticationService} from './services/authentication.service';
+import {TasksService} from './services/tasks.service';
+
 
 import {AppComponent} from './app.component';
 import {LoginComponent} from './components/login/login.component';
@@ -24,9 +26,12 @@ import {LogoutComponent} from './components/logout/logout.component';
 import {PlainnavbarComponent} from './components/plainnavbar/plainnavbar.component';
 import {LoginnavbarComponent} from './components/loginnavbar/loginnavbar.component';
 import {HomeComponent} from './components/home/home.component';
-import {CourseComponent} from './components/course/course.component';
+import {CourseComponent} from './components/course-tile/course.component';
 import {CoursePageComponent} from './components/course-page/course-page.component';
 import {FileUploadComponent} from './components/file-upload/file-upload.component';
+import {TaskTileComponent} from './components/task-tile/task-tile.component';
+import { TaskPageComponent } from './components/task-page/task-page.component';
+import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +50,10 @@ import {FileUploadComponent} from './components/file-upload/file-upload.componen
     CourseComponent,
     CoursePageComponent,
     FileUploadComponent,
-    FileSelectDirective
+    FileSelectDirective,
+    TaskTileComponent,
+    TaskPageComponent,
+    FileUploaderComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +63,7 @@ import {FileUploadComponent} from './components/file-upload/file-upload.componen
     CoolStorageModule,
     AppRoutingModule
   ],
-  providers: [AuthenticationService, CoursesService, GroupsService, UsersService],
+  providers: [AuthenticationService, CoursesService, GroupsService, UsersService, TasksService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -2,7 +2,7 @@ module.exports = (app, upload) => {
     const documents = require('../controllers/document.controller.js');
 
     // Create a new Document
-    app.post('/documents', upload.single('document'), documents.create);
+    app.post('/documents', upload.array("uploads[]", 12), documents.create);
 
     // Retrieve all Documents
     app.get('/documents', documents.findAll);

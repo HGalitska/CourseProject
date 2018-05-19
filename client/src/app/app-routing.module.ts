@@ -10,6 +10,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { HomeComponent } from './components/home/home.component';
 import { CoursePageComponent } from './components/course-page/course-page.component';
+import { TaskPageComponent } from './components/task-page/task-page.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
     children: [
       { path: 'courses',  component: CoursesComponent},
       { path: 'course/:course_id/:owner_id',   component: CoursePageComponent},
+      { path: 'task/:task_id',   component: TaskPageComponent},
       { path: 'progress', component: ProgressComponent},
       { path: 'settings', component: SettingsComponent},
       { path: 'logout',   component: LogoutComponent}
