@@ -10,7 +10,7 @@ export class UsersService {
   constructor(private http: HttpClient) {
   }
 
-  addNewUser(newUser: any, token: string): Observable<any> {
+  addNewUser(newUser: any): Observable<any> {
     return this.http.post(this.url, newUser);
   }
 

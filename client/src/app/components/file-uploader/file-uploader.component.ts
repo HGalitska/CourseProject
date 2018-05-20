@@ -36,7 +36,7 @@ export class FileUploaderComponent implements OnInit {
     }
     console.log('form data variable :   ' + formData.toString());
     this.http.post('http://localhost:3000/documents/', formData)
-      .map((files : Response) => files.json())
+      .map((files) => files.json())
       .subscribe(files => {
         console.log(files);
         this.addFilesToCollection(files);

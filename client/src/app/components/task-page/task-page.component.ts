@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {TasksService} from "../../services/tasks.service";
 import {DocumentsService} from "../../services/documents.service";
 import {SubmittedTasksService} from "../../services/submitted-tasks.service";
+import {Location} from '@angular/common';
 
 
 @Component({
   selector: 'app-task-page',
   templateUrl: './task-page.component.html',
-  styleUrls: ['./task-page.component.css']
+  styleUrls: ['./task-page.component.css'],
 })
 export class TaskPageComponent implements OnInit {
 
@@ -16,9 +17,9 @@ export class TaskPageComponent implements OnInit {
   task: Object;
   documents = [];
   currentUser;
-  attempts=[];
+  attempts = [];
 
-  constructor(private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute, private location: Location,
               private tasksService: TasksService, private documentsService: DocumentsService,
               private submittedTasksService : SubmittedTasksService) { }
 
@@ -52,6 +53,10 @@ export class TaskPageComponent implements OnInit {
       }
     )
 
+  }
+
+  backToCourse() {
+    this.location.back()
   }
 
 }

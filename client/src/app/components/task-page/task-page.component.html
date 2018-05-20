@@ -1,7 +1,7 @@
-<p *ngIf="task" >{{ task.title }}</p>
+<p *ngIf="task">{{ task.title }}</p>
 
-<p *ngIf="task" >{{ task.description }}</p>
-<p *ngIf="task" >{{ task.deadline | date:'dd MMMM yyyy' }}</p>
+<p *ngIf="task">{{ task.description }}</p>
+<p *ngIf="task">{{ task.deadline | date:'dd MMMM yyyy' }}</p>
 
 <p>Documents for this task:</p>
 <app-doc-tile *ngFor="let doc of documents" [doc]="doc"></app-doc-tile>
@@ -9,10 +9,13 @@
 <!--TODO: back to course button-->
 
 
-
 <h4>Upload Completed Task:</h4>
 <app-file-uploader [type]="'submitted'" [task_id]="taskId" [user_id]="currentUser"></app-file-uploader>
 
 
-<h4> My Submits: </h4>
-<app-submitted-tile *ngFor="let attempt of attempts" [submittedTask]="attempt"></app-submitted-tile>
+<div *ngIf="attempts.length != 0">
+  <h4> My Submits: </h4>
+  <app-submitted-tile *ngFor="let attempt of attempts" [submittedTask]="attempt"></app-submitted-tile>
+</div>
+
+<button class="btn btn-outline-info"(click)="backToCourse()">Back to course</button>
