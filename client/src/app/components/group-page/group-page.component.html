@@ -1,0 +1,25 @@
+<div *ngIf="group && course">
+  <p>{{group.name}} ({{course.name}})</p>
+  <!--<p *ngFor="let student of students">{{ student.firstName + " " + student.lastName }}</p>-->
+  <table class="table table-bordered">
+    <!--<tr>-->
+      <!--<td>Name</td>-->
+      <!--&lt;!&ndash;<td *ngFor="let task of tasks">{{task.title}} ({{task.deadline | date:'dd MMMM yyyy'}})</td>&ndash;&gt;-->
+      <!--<td *ngFor="let task of tasks"> Task </td>-->
+      <!--<td>Total</td>-->
+    <!--</tr>-->
+    <tr *ngFor="let student of students">
+      <td>{{ student.firstName + " " + student.lastName }}</td>
+      <td *ngFor="let submittedTask of student.submittedTasks">
+        <p *ngIf="submittedTask.mark == -1"> {{submittedTask.task.title}} </p>
+        <!--<p *ngIf="submittedTask.mark == -1"> not reviewed </p>-->
+        <p *ngIf="submittedTask.mark != -1"> submittedTask.mark </p>
+      </td>
+      <td *ngFor="let task of tasks"></td>
+      <td> -1 </td>
+    </tr>
+
+  </table>
+
+  <button class="btn btn-outline-info" (click)="backToCourse()">Back to course</button>
+</div>

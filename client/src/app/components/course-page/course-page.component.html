@@ -1,11 +1,24 @@
-<p *ngIf="course" >{{ course.name }}</p>
+<h2 *ngIf="course">{{ course.name }}</h2>
+<button class="btn btn-outline-primary" (click)="enterEditingMode()" *ngIf="teacher">Edit Course</button>
 
-<p *ngIf="course" >{{ course.description }}</p>
-<p *ngIf="owner" >{{ owner.firstName + " " + owner.lastName }}</p>
+<p *ngIf="course">{{ course.description }}</p>
+<p *ngIf="owner && !teacher">{{ owner.firstName + " " + owner.lastName }}</p>
 <h3>Materials:</h3>
-<app-doc-tile *ngFor="let doc of documents" [doc]="doc"></app-doc-tile>
+<app-doc-tile *ngFor="let doc of documents" [doc]="doc" [editMode]="editMode"></app-doc-tile>
+<div *ngIf="editMode">
+  <h2>Add Materials:</h2>
+  <app-file-uploader [type]="'material'" [course_id]="courseId"></app-file-uploader>
+  <button class="btn btn-outline-primary" (click)="update()">Update</button>
+</div>
 
 <h3>Tasks:</h3>
-<p *ngIf="course" >
-<app-task-tile *ngFor="let task of course.tasks" [taskId]="task"> </app-task-tile>
+<p *ngIf="course">
+  <app-task-tile *ngFor="let task of course.tasks" [taskId]="task"></app-task-tile>
 </p>
+
+<div *ngIf="teacher">
+  <h3>Members:</h3>
+  <p *ngIf="course">
+    <app-member-tile *ngFor="let member of members" [member]="member" [course]="course"></app-member-tile>
+  </p>
+</div>

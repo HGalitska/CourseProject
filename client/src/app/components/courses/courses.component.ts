@@ -10,6 +10,7 @@ import { GroupsService } from '../../services/groups.service';
 export class CoursesComponent implements OnInit {
 
   courses = [];
+  teacher = false;
 
   constructor(private coursesService: CoursesService, private groupsService: GroupsService, ) { }
 
@@ -18,6 +19,23 @@ export class CoursesComponent implements OnInit {
   }
 
   getCoursesForCurrentUser() {
+    this.coursesService.getAllCourses(localStorage.getItem("currentToken")).subscribe(
+      allCourses => {
+        for (var i = 0; i < allCourses.length; i++) {
+          if (allCourses[i].owner_id == localStorage.getItem("currentUserId")) {
+            this.courses.push(allCourses[i]);
+          }
+        }
+
+        if (this.courses.length != 0){
+          this.teacher = true;
+          return;
+        }
+    }
+    )
+
+
+
     const userId = localStorage.getItem("currentUserId");
     this.groupsService.getAllGroups(localStorage.getItem("currentToken")).subscribe(
       groups => {

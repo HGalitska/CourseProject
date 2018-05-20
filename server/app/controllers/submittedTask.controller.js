@@ -47,7 +47,7 @@ exports.create = (req, res) => {
 
 // Retrieve and return all SubmittedTasks from the database.
 exports.findAll = (req, res) => {
-  SubmittedTask.find()
+  SubmittedTask.find().sort([['_id', 1]])
     .then(submittedTasks => {
       res.send(submittedTasks);
     })

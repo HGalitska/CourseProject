@@ -14,14 +14,18 @@ export class CoursePageComponent implements OnInit {
 
   courseId: string;
   ownerId: string;
+
   course: Object;
   owner: Object;
+
   documents = [];
+  members = [];
+  teacher = false;
+  editMode = false;
 
   constructor(private route: ActivatedRoute, private coursesService: CoursesService,
               private groupsService: GroupsService, private usersService: UsersService,
-              private documentsService : DocumentsService) {
-  }
+              private documentsService : DocumentsService) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -32,19 +36,44 @@ export class CoursePageComponent implements OnInit {
       data => {
         this.course = data;
         for (var i = 0; i < data.docs.length; i++) {
-          var doc = this.documentsService.getDocumentById(data.docs[i], localStorage.getItem("currentToken")).subscribe(
+          this.documentsService.getDocumentById(data.docs[i], localStorage.getItem("currentToken")).subscribe(
             data => {
               this.documents.push(data);
             }
           )
         }
+
+        for (var i = 0; i < data.members.length; i++) {
+          console.log(data.members[i]);
+          this.groupsService.getGroupById(data.members[i], localStorage.getItem("currentToken")).subscribe(
+            group => {
+
+              this.members.push(group);
+            }
+          )
+        }
+
+
         this.ownerId = data.owner_id;
         this.usersService.getUserById(this.ownerId, localStorage.getItem("currentToken")).subscribe(
           data => {
             this.owner = data;
           });
+
+        if (this.ownerId == localStorage.getItem("currentUserId")) {
+          this.teacher = true;
+        }
       });
 
+  }
+
+  enterEditingMode() {
+    this.editMode = !this.editMode;
+  }
+
+  update(){
+    this.ngOnInit();
+    this.enterEditingMode();
   }
 
 }

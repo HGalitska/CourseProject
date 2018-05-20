@@ -1,6 +1,12 @@
 <div class="card">
   <div class="card-body">
     <h4 class="card-title" *ngIf="doc">{{ doc.title }}</h4>
+    <div *ngIf="editMode">
+      <button (click)="deleteFile()" class="btn btn-primary">remove</button>
+    </div>
+
+    <div *ngIf="!editMode">
     <button (click)="downloadFile()" class="btn btn-success">download</button>
+  </div>
   </div>
 </div>

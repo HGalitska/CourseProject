@@ -43,7 +43,7 @@ exports.create = (req, res) => {
 
 // Retrieve and return all users from the database.
 exports.findAll = (req, res) => {
-  User.find()
+  User.find().sort([['_id', 1]])
     .then(users => {
       res.send(users);
     })

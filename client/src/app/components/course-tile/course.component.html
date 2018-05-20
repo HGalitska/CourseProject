@@ -1,8 +1,8 @@
 <div class="card">
   <div class="card-body">
     <h4 class="card-title">{{ course.name }}</h4>
-    <p class="card-text">Owner: {{ ownerString }} </p>
-    <p class="card-text">Progress: {{ progress }}</p>
+    <p class="card-text" *ngIf="!teacher">Owner: {{ ownerString }} </p>
+    <p class="card-text" *ngIf="!teacher">Progress: {{ progress }}</p>
     <button (click)="openCoursePage()" class="btn btn-success">Open</button>
   </div>
 </div>

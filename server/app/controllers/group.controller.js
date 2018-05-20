@@ -33,7 +33,7 @@ exports.create = (req, res) => {
 
 // Retrieve and return all Groups from the database.
 exports.findAll = (req, res) => {
-  Group.find()
+  Group.find().sort([['_id', 1]])
     .then(groups => {
       res.send(groups);
     })

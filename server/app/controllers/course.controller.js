@@ -36,7 +36,7 @@ exports.create = (req, res) => {
 
 // Retrieve and return all Courses from the database.
 exports.findAll = (req, res) => {
-    Course.find()
+    Course.find().sort([['_id', 1]])
         .then(courses => {
             res.send(courses);
         })

@@ -33,7 +33,7 @@ exports.create = (req, res) => {
 
 // Retrieve and return all Lectures from the database.
 exports.findAll = (req, res) => {
-  Lecture.find()
+  Lecture.find().sort([['_id', 1]])
     .then(lectures => {
       res.send(lectures);
     })

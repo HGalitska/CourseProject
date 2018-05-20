@@ -30,7 +30,7 @@ exports.create = (req, res) => {
 
 // Retrieve and return all tasks from the database.
 exports.findAll = (req, res) => {
-  Task.find()
+  Task.find().sort([['_id', 1]])
     .then(tasks => {
       res.send(tasks);
     })

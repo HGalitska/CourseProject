@@ -37,6 +37,8 @@ import { TaskPageComponent } from './components/task-page/task-page.component';
 import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
 import { DocTileComponent } from './components/doc-tile/doc-tile.component';
 import { SubmittedTileComponent } from './components/submitted-tile/submitted-tile.component';
+import { MemberTileComponent } from './components/member-tile/member-tile.component';
+import { GroupPageComponent } from './components/group-page/group-page.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { SubmittedTileComponent } from './components/submitted-tile/submitted-ti
     TaskPageComponent,
     FileUploaderComponent,
     DocTileComponent,
-    SubmittedTileComponent
+    SubmittedTileComponent,
+    MemberTileComponent,
+    GroupPageComponent
   ],
   imports: [
     BrowserModule,

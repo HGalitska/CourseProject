@@ -11,6 +11,7 @@ import {SubmittedTasksService} from "../../services/submitted-tasks.service";
 export class CourseComponent implements OnInit {
 
   @Input() course;
+  @Input() teacher;
   course_id;
   owner_id;
   ownerString : string;
@@ -51,7 +52,7 @@ export class CourseComponent implements OnInit {
   }
 
   openCoursePage() {
-    this.router.navigate(['/profile/course', this.course_id, this.owner_id])
+    this.router.navigate(['/profile/course', this.course_id])
   }
 
 }

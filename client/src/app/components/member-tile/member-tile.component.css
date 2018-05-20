@@ -2,3 +2,7 @@
   width: 150px;
   display: inline-block;
 }
+
+.card:hover {
+  background-color: lightgreen;
+}

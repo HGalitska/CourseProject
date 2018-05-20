@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {Http} from "@angular/http";
+import {DocumentsService} from "../../services/documents.service";
 
 @Component({
   selector: 'app-doc-tile',
@@ -10,17 +11,27 @@ import {Http} from "@angular/http";
 export class DocTileComponent implements OnInit {
 
   @Input() doc;
+  @Input() editMode;
 
-  constructor(private router : Router, private http :Http) { }
+  constructor(private router : Router, private http :Http, private documentsService : DocumentsService) { }
 
   ngOnInit() {
   }
 
   downloadFile() {
-    console.log(this.doc);
-    console.log("downloaded");
-
     window.open("http://localhost:3000/uploads/" + this.doc.filePath, "_blank");
+  }
+
+  deleteFile(){
+    const docId = this.doc._id;
+
+    this.documentsService.deleteDocumentById(docId, localStorage.getItem("currentToken")).subscribe(
+      deleted => {
+        console.log(deleted);
+      }
+    )
+
+
   }
 
 }

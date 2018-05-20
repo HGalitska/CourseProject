@@ -3,6 +3,7 @@ import {Http} from "@angular/http";
 import {SubmittedTasksService} from "../../services/submitted-tasks.service";
 import {CoursesService} from "../../services/courses.service";
 import {TasksService} from "../../services/tasks.service";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-file-uploader',
@@ -20,7 +21,8 @@ export class FileUploaderComponent implements OnInit {
   filesToUpload: Array<File> = [];
 
   constructor(private http: Http, private submittedTasksService: SubmittedTasksService,
-              private coursesService: CoursesService, private tasksService: TasksService) {
+              private coursesService: CoursesService, private tasksService: TasksService,
+              private location : Location) {
   }
 
   ngOnInit() {

@@ -4,6 +4,7 @@ import {TasksService} from "../../services/tasks.service";
 import {DocumentsService} from "../../services/documents.service";
 import {SubmittedTasksService} from "../../services/submitted-tasks.service";
 import {Location} from '@angular/common';
+import {CoursesService} from "../../services/courses.service";
 
 
 @Component({
@@ -18,10 +19,13 @@ export class TaskPageComponent implements OnInit {
   documents = [];
   currentUser;
   attempts = [];
+  teacher = false;
 
   constructor(private route: ActivatedRoute, private location: Location,
               private tasksService: TasksService, private documentsService: DocumentsService,
-              private submittedTasksService : SubmittedTasksService) { }
+              private submittedTasksService : SubmittedTasksService, private coursesService : CoursesService) {
+    this.teacher = false;
+  }
 
   ngOnInit() {
     this.currentUser = localStorage.getItem("currentUserId");
@@ -40,6 +44,16 @@ export class TaskPageComponent implements OnInit {
           )
         }
 
+      }
+    )
+
+    this.coursesService.getAllCourses(localStorage.getItem("currentToken")).subscribe(
+      courses => {
+        courses.forEach((course) => {
+          if (course.owner_id == localStorage.getItem("currentUserId")) {
+            this.teacher = true;
+          }
+        })
       }
     )
 

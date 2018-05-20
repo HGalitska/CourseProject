@@ -11,14 +11,16 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { HomeComponent } from './components/home/home.component';
 import { CoursePageComponent } from './components/course-page/course-page.component';
 import { TaskPageComponent } from './components/task-page/task-page.component';
+import {GroupPageComponent} from "./components/group-page/group-page.component";
 
 const routes: Routes = [
   {
     path: 'profile', component: ProfileComponent,
     children: [
       { path: 'courses',  component: CoursesComponent},
-      { path: 'course/:course_id/:owner_id',   component: CoursePageComponent},
+      { path: 'course/:course_id',   component: CoursePageComponent},
       { path: 'task/:task_id',   component: TaskPageComponent},
+      { path: 'course/:course_id/:group_id',   component: GroupPageComponent},
       { path: 'progress', component: ProgressComponent},
       { path: 'settings', component: SettingsComponent},
       { path: 'logout',   component: LogoutComponent}
@@ -27,6 +29,7 @@ const routes: Routes = [
   { path: '',       component: HomeComponent,
     children: [
       { path: 'signup', component: SignupComponent },
+
       { path: 'about',  component: AboutComponent },
       { path: '',       component: AboutComponent }
     ]},
