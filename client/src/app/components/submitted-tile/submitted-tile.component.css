@@ -1,4 +1,13 @@
 .card {
-  width: 150px;
+  width: 300px;
   display: inline-block;
+}
+
+input {
+  display: inline-block;
+}
+
+.evaluated {
+  background-color: green;
+  color: white;
 }

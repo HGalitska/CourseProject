@@ -6,11 +6,9 @@
 <p>Documents for this task:</p>
 <app-doc-tile *ngFor="let doc of documents" [doc]="doc"></app-doc-tile>
 
-<!--TODO: back to course button-->
-
 <div *ngIf="teacher">
   <h3>Completed tasks:</h3>
-  <app-submitted-tile *ngFor="let attempt of attempts" [submittedTask]="attempt"></app-submitted-tile>
+  <app-submitted-tile *ngFor="let attempt of attempts" [submittedTask]="attempt" [teacher]="teacher"></app-submitted-tile>
 </div>
 
 <div *ngIf="!teacher">

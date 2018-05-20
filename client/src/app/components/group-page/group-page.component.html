@@ -11,12 +11,12 @@
     <tr *ngFor="let student of students">
       <td>{{ student.firstName + " " + student.lastName }}</td>
       <td *ngFor="let submittedTask of student.submittedTasks">
-        <p *ngIf="submittedTask.mark == -1"> {{submittedTask.task.title}} </p>
+        <p *ngIf="submittedTask.mark == -1"> {{submittedTask.task.title}} : to review </p>
         <!--<p *ngIf="submittedTask.mark == -1"> not reviewed </p>-->
-        <p *ngIf="submittedTask.mark != -1"> submittedTask.mark </p>
+        <p *ngIf="submittedTask.mark != -1"> {{submittedTask.task.title}} : {{submittedTask.mark }}</p>
       </td>
-      <td *ngFor="let task of tasks"></td>
-      <td> -1 </td>
+      <td *ngFor="let i of Arr(tasks.length - student.submittedTasks.length).fill(1)"></td>
+      <td> {{student.submittedTasks.length / tasks.length * 100}} % </td>
     </tr>
 
   </table>

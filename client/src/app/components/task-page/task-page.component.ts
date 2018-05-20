@@ -60,7 +60,7 @@ export class TaskPageComponent implements OnInit {
     this.submittedTasksService.getAllSubmittedTasks(localStorage.getItem("currentToken")).subscribe(
       data => {
         for (var i = 0; i < data.length; i++) {
-          if (data[i].task_id == this.taskId && data[i].student_id == this.currentUser) {
+          if (data[i].task_id == this.taskId && (data[i].student_id == this.currentUser || this.teacher)) {
             this.attempts.push(data[i]);
           }
         }

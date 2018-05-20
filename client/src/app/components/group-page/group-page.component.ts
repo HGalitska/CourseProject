@@ -23,6 +23,8 @@ export class GroupPageComponent implements OnInit {
   students;
   tasks;
 
+  Arr = Array;
+
   constructor(private route: ActivatedRoute, private location: Location,
               private groupsService: GroupsService, private coursesService: CoursesService,
               private usersService: UsersService, private tasksService: TasksService,
@@ -45,7 +47,6 @@ export class GroupPageComponent implements OnInit {
           this.tasksService.getTaskById(course.tasks[i], localStorage.getItem("currentToken")).subscribe(
             task => {
               this.tasks.push(task);
-
             }
           )
         }

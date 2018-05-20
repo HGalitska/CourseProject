@@ -1,5 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DocumentsService} from "../../services/documents.service";
+import {UsersService} from "../../services/users.service";
+import {GroupsService} from "../../services/groups.service";
+import {SubmittedTasksService} from "../../services/submitted-tasks.service";
 
 @Component({
   selector: 'app-submitted-tile',
@@ -9,10 +12,15 @@ import {DocumentsService} from "../../services/documents.service";
 export class SubmittedTileComponent implements OnInit {
 
   @Input() submittedTask;
+  @Input() teacher;
+  student;
   mark;
   documents = [];
+  marked = false;
 
-  constructor(private documentsService: DocumentsService) { }
+  constructor(private documentsService: DocumentsService, private usersService: UsersService,
+              private groupsService: GroupsService, private submittedTasksService: SubmittedTasksService) {
+  }
 
   ngOnInit() {
     if (this.submittedTask.mark == -1) {
@@ -30,6 +38,33 @@ export class SubmittedTileComponent implements OnInit {
       )
     }
 
+    this.usersService.getUserById(this.submittedTask.student_id, localStorage.getItem("currentToken")).subscribe(
+      user => {
+        this.student = user;
+        this.groupsService.getAllGroups(localStorage.getItem("currentToken")).subscribe(
+          groups => {
+            groups.forEach(group => {
+              if (group.students.includes(user._id)) {
+                this.student.group = group;
+              }
+            })
+          }
+        )
+      }
+    )
+
+  }
+
+  putMark(mark) {
+    this.submittedTask.mark = mark;
+    this.submittedTasksService.updateSubmittedTaskById(this.submittedTask._id,
+      localStorage.getItem("currentToken"), this.submittedTask).subscribe(
+      data => {
+        console.log(data);
+        this.marked = true;
+        this.mark = mark;
+      }
+    )
   }
 
 }
