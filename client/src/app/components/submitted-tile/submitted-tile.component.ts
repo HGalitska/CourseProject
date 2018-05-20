@@ -55,14 +55,14 @@ export class SubmittedTileComponent implements OnInit {
 
   }
 
-  putMark(mark) {
-    this.submittedTask.mark = mark;
+
+  saveChanges(value) {
+    this.marked = true;
+    this.submittedTask.mark = value;
     this.submittedTasksService.updateSubmittedTaskById(this.submittedTask._id,
       localStorage.getItem("currentToken"), this.submittedTask).subscribe(
       data => {
         console.log(data);
-        this.marked = true;
-        this.mark = mark;
       }
     )
   }

@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { CoursePageComponent } from './components/course-page/course-page.component';
 import { TaskPageComponent } from './components/task-page/task-page.component';
 import {GroupPageComponent} from "./components/group-page/group-page.component";
+import {CourseCreateComponent} from "./components/course-create/course-create.component";
 
 const routes: Routes = [
   {

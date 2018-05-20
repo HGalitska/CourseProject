@@ -11,7 +11,8 @@ export class TasksService {
   }
 
   addNewTask(newTask: any, token: string): Observable<any> {
-    return this.http.post(this.url, newTask);
+    return this.http.post(this.url, newTask, {
+      headers: { 'x-access-token': token }});
   }
 
   getAllTasks(token: string): Observable<any> {

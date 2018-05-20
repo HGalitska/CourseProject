@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CoursesService } from '../../services/courses.service';
 import { GroupsService } from '../../services/groups.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-courses',
@@ -12,7 +13,8 @@ export class CoursesComponent implements OnInit {
   courses = [];
   teacher = false;
 
-  constructor(private coursesService: CoursesService, private groupsService: GroupsService, ) { }
+  constructor(private coursesService: CoursesService, private groupsService: GroupsService,
+              private router: Router) { }
 
   ngOnInit() {
     this.getCoursesForCurrentUser();
@@ -66,5 +68,23 @@ export class CoursesComponent implements OnInit {
           }
         }
       });
+  }
+
+
+  openCourseCreation(){
+    var course = {
+      owner_id: localStorage.getItem("currentUserId"),
+      name : "No Name",
+      description : "No description.",
+      members: [],
+      docs: [],
+      tasks: []
+    }
+
+    this.coursesService.addNewCourse(course, localStorage.getItem("currentToken")).subscribe(
+      course => {
+        console.log(course);
+      }
+    )
   }
 }

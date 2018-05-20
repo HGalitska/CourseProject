@@ -1,10 +1,27 @@
 <p *ngIf="task">{{ task.title }}</p>
+<app-inline-edit *ngIf="task && editMode" [(ngModel)]=task.title (onSave)=saveChanges(task.title)></app-inline-edit>
+
+<button class="btn btn-outline-primary startEdit" (click)="enterEditingMode()" *ngIf="teacher">Edit Task</button>
+<button class="btn btn-danger deleteTask" (click)="deleteTask()" *ngIf="teacher && editMode">Delete Task</button>
+
+
 
 <p *ngIf="task">{{ task.description }}</p>
+<app-inline-edit *ngIf="task && editMode" [(ngModel)]=task.description (onSave)=saveChanges(task.description)></app-inline-edit>
+
+
 <p *ngIf="task">{{ task.deadline | date:'dd MMMM yyyy' }}</p>
+<app-inline-edit *ngIf="task && editMode" [(ngModel)]=task.deadline (onSave)=saveChanges(task.deadline)></app-inline-edit>
+
 
 <p>Documents for this task:</p>
-<app-doc-tile *ngFor="let doc of documents" [doc]="doc"></app-doc-tile>
+<app-doc-tile *ngFor="let doc of documents" [doc]="doc" [editMode]="editMode"></app-doc-tile>
+
+<div *ngIf="editMode">
+  <h2>Add Documents:</h2>
+  <app-file-uploader [type]="'task'" [task_id]="taskId"></app-file-uploader>
+  <button class="btn btn-outline-primary" (click)="update()">Update</button>
+</div>
 
 <div *ngIf="teacher">
   <h3>Completed tasks:</h3>

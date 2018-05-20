@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {TasksService} from "../../services/tasks.service";
 import {DocumentsService} from "../../services/documents.service";
 import {SubmittedTasksService} from "../../services/submitted-tasks.service";
@@ -20,6 +20,8 @@ export class TaskPageComponent implements OnInit {
   currentUser;
   attempts = [];
   teacher = false;
+  editMode = false;
+  course;
 
   constructor(private route: ActivatedRoute, private location: Location,
               private tasksService: TasksService, private documentsService: DocumentsService,
@@ -35,6 +37,7 @@ export class TaskPageComponent implements OnInit {
 
     this.tasksService.getTaskById(this.taskId, localStorage.getItem("currentToken")).subscribe(
       data => {
+        if (!data.description) data.description = "No description.";
         this.task = data;
         for (var i = 0; i < data.docs.length; i++) {
           var doc = this.documentsService.getDocumentById(data.docs[i], localStorage.getItem("currentToken")).subscribe(
@@ -52,6 +55,10 @@ export class TaskPageComponent implements OnInit {
         courses.forEach((course) => {
           if (course.owner_id == localStorage.getItem("currentUserId")) {
             this.teacher = true;
+          }
+
+          if (course.tasks.includes(this.taskId)) {
+            this.course = course;
           }
         })
       }
@@ -71,6 +78,36 @@ export class TaskPageComponent implements OnInit {
 
   backToCourse() {
     this.location.back()
+  }
+
+  enterEditingMode() {
+    this.editMode = !this.editMode;
+  }
+
+  saveChanges(value) {
+    this.tasksService.updateTaskById(this.taskId, localStorage.getItem("currentToken"), this.task).subscribe(
+      task => {
+        console.log(task);
+      }
+    )
+  }
+
+  deleteTask() {
+    this.tasksService.deleteTaskById(this.taskId, localStorage.getItem("currentToken")).subscribe(
+      task => {
+        console.log(task);
+        this.course.tasks.splice(this.course.tasks.indexOf(this.taskId), 1);
+        this.coursesService.updateCourseById(this.course._id, localStorage.getItem("currentToken"), this.course).subscribe(
+          course => {
+            console.log(course);
+
+          }
+        )
+
+
+        this.backToCourse();
+      }
+    )
   }
 
 }

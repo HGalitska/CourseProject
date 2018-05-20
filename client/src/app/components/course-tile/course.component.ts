@@ -55,4 +55,8 @@ export class CourseComponent implements OnInit {
     this.router.navigate(['/profile/course', this.course_id])
   }
 
+  saveEditable(value) {
+    console.log(value);
+  }
+
 }

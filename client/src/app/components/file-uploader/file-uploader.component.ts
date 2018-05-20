@@ -104,6 +104,7 @@ export class FileUploaderComponent implements OnInit {
   }
 
   addToTask(files) {
+    console.log(this.task_id);
     this.tasksService.getTaskById(this.task_id, localStorage.getItem("currentToken")).subscribe(
       task => {
         for (var i = 0; i < files.length; i++) {

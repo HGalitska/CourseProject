@@ -39,6 +39,7 @@ import { DocTileComponent } from './components/doc-tile/doc-tile.component';
 import { SubmittedTileComponent } from './components/submitted-tile/submitted-tile.component';
 import { MemberTileComponent } from './components/member-tile/member-tile.component';
 import { GroupPageComponent } from './components/group-page/group-page.component';
+import { InlineEditComponent } from './components/inline-edit/inline-edit.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { GroupPageComponent } from './components/group-page/group-page.component
     DocTileComponent,
     SubmittedTileComponent,
     MemberTileComponent,
-    GroupPageComponent
+    GroupPageComponent,
+    InlineEditComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,7 +11,8 @@ export class CoursesService {
   }
 
   addNewCourse(newCourse: any, token: string): Observable<any> {
-    return this.http.post(this.url, newCourse);
+    return this.http.post(this.url, newCourse, {
+      headers: { 'x-access-token': token }});
   }
 
   getAllCourses(token: string): Observable<any> {

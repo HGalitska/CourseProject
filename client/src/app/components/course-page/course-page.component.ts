@@ -1,9 +1,11 @@
 import {Component, OnInit, ɵEMPTY_ARRAY} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {CoursesService} from '../../services/courses.service'
 import {GroupsService} from '../../services/groups.service'
 import {UsersService} from '../../services/users.service'
 import {DocumentsService} from "../../services/documents.service";
+import {TaskScheduler} from "protractor/built/taskScheduler";
+import {TasksService} from "../../services/tasks.service";
 
 @Component({
   selector: 'app-course-page',
@@ -23,9 +25,11 @@ export class CoursePageComponent implements OnInit {
   teacher = false;
   editMode = false;
 
-  constructor(private route: ActivatedRoute, private coursesService: CoursesService,
+  constructor(private route: ActivatedRoute, private router: Router,
+              private coursesService: CoursesService,
               private groupsService: GroupsService, private usersService: UsersService,
-              private documentsService : DocumentsService) {}
+              private documentsService: DocumentsService, private tasksService : TasksService) {
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -34,7 +38,9 @@ export class CoursePageComponent implements OnInit {
 
     this.coursesService.getCourseById(this.courseId, localStorage.getItem("currentToken")).subscribe(
       data => {
+        if (!data.description) data.description = "No description.";
         this.course = data;
+
         for (var i = 0; i < data.docs.length; i++) {
           this.documentsService.getDocumentById(data.docs[i], localStorage.getItem("currentToken")).subscribe(
             data => {
@@ -71,9 +77,51 @@ export class CoursePageComponent implements OnInit {
     this.editMode = !this.editMode;
   }
 
-  update(){
+  update() {
     this.ngOnInit();
     this.enterEditingMode();
   }
+
+  saveChanges(value) {
+    this.coursesService.updateCourseById(this.courseId, localStorage.getItem("currentToken"), this.course).subscribe(
+      course => {
+        console.log(course);
+        this.course = course;
+      }
+    )
+  }
+
+  deleteCourse() {
+    this.coursesService.deleteCourseById(this.courseId, localStorage.getItem("currentToken")).subscribe(
+      course => {
+        console.log(course);
+        this.router.navigate(['/profile/courses'])
+      }
+    )
+  }
+
+  openTaskCreation(){
+    var task = {
+      title: "No Name",
+      deadline : Date.now(),
+      description : "No description.",
+      docs: []
+    }
+
+    this.tasksService.addNewTask(task, localStorage.getItem("currentToken")).subscribe(
+      task => {
+        console.log(task);
+
+        this.course.tasks.push(task._id);
+        this.coursesService.updateCourseById(this.courseId, localStorage.getItem("currentToken"), this.course).subscribe(
+          course => {
+            console.log(course);
+            this.course = course;
+          }
+        )
+      }
+    )
+  }
+
 
 }
