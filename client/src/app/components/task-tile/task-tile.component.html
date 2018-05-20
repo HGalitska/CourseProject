@@ -1,8 +1,10 @@
-<div class="card">
-  <div class="card-body">
-    <h4 class="card-title" *ngIf="task">{{ task.title }}</h4>
-    <p class="card-text" *ngIf="task">Description: {{ task.description }} </p>
-    <p class="card-text" *ngIf="task">Deadline: {{ task.deadline | date:'dd MMMM yyyy'}}</p>
-    <button (click)="openTaskPage()" class="btn btn-success">Open</button>
+<div class="card-item">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title" *ngIf="task">{{ task.title }}</h4>
+      <p class="card-text" *ngIf="task">Description: {{ task.description }} </p>
+      <p class="card-text" *ngIf="task">Deadline: {{ task.deadline | date:'dd MMMM yyyy'}}</p>
+      <button (click)="openTaskPage()" class="btn btn-success">Open</button>
+    </div>
   </div>
 </div>

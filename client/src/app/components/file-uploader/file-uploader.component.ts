@@ -29,8 +29,8 @@ export class FileUploaderComponent implements OnInit {
   }
 
   upload() {
-    const formData: any = new FormData();
-    const files: Array<File> = this.filesToUpload;
+    var formData: any = new FormData();
+    var files: Array<File> = this.filesToUpload;
     console.log(files);
 
     for (let i = 0; i < files.length; i++) {
@@ -39,15 +39,14 @@ export class FileUploaderComponent implements OnInit {
     console.log('form data variable :   ' + formData.toString());
     this.http.post('http://localhost:3000/documents/', formData)
       .map((files) => files.json())
-      .subscribe(files => {
-        console.log(files);
-        this.addFilesToCollection(files);
+      .subscribe(newFiles => {
+        this.addFilesToCollection(newFiles);
+        files = newFiles;
       })
   }
 
   fileChangeEvent(fileInput: any) {
     this.filesToUpload = <Array<File>>fileInput.target.files;
-    //this.product.photo = fileInput.target.files[0]['name'];
   }
 
   addFilesToCollection(files) {

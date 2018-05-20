@@ -24,7 +24,7 @@ export class SubmittedTileComponent implements OnInit {
 
   ngOnInit() {
     if (this.submittedTask.mark == -1) {
-      this.mark = "-";
+      this.mark = "not evaluated";
     }
     else {
       this.mark = this.submittedTask.mark;

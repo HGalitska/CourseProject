@@ -1,12 +1,14 @@
-<div class="card">
-  <div class="card-body">
-    <h4 class="card-title" *ngIf="doc">{{ doc.title }}</h4>
-    <div *ngIf="editMode">
-      <button (click)="deleteFile()" class="btn btn-primary">remove</button>
+<div class="card-item">
+  <div class="card">
+    <!--<div class="card-body">-->
+    <div>
+      <div *ngIf="doc">
+        <span *ngIf="editMode" (click)="deleteFile()" class="fa fa-close"></span>
+      <span class="card-title doc-title" (click)="downloadFile()">{{ title }}</span></div>
     </div>
 
     <div *ngIf="!editMode">
-    <button (click)="downloadFile()" class="btn btn-success">download</button>
-  </div>
+    </div>
+    <!--</div>-->
   </div>
 </div>

@@ -7,3 +7,11 @@
   margin-left: 950px;
   margin-bottom: 20px;
 }
+
+app-doc-tile {
+  display: inline-block;
+}
+
+.deadline {
+  color: red;
+}

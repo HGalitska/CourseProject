@@ -12,10 +12,15 @@ export class DocTileComponent implements OnInit {
 
   @Input() doc;
   @Input() editMode;
+  title;
 
   constructor(private router : Router, private http :Http, private documentsService : DocumentsService) { }
 
   ngOnInit() {
+    this.title = this.doc.title;
+    if (this.title.length > 30) {
+      this.title = this.title.substring(0, 23) + "..." + this.title.substring(this.title.length - 5);
+    }
   }
 
   downloadFile() {

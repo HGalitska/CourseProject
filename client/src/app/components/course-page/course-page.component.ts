@@ -78,8 +78,14 @@ export class CoursePageComponent implements OnInit {
   }
 
   update() {
-    this.ngOnInit();
-    this.enterEditingMode();
+    // this.documents = [];
+    // for (var i = 0; i < this.course.docs.length; i++) {
+    //   this.documentsService.getDocumentById(this.course.docs[i], localStorage.getItem("currentToken")).subscribe(
+    //     data => {
+    //       this.documents.push(data);
+    //     }
+    //   )
+    // }
   }
 
   saveChanges(value) {

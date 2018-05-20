@@ -1,5 +1,12 @@
+.card-item {
+  display: inline-block;
+  width: 300px;
+  height: 340px;
+  margin: 5px;
+  margin-bottom: 10px;
+}
+
 .card {
   width: 300px;
-  display: inline-table;
-  height: 300px;
+  height: 340px;
 }

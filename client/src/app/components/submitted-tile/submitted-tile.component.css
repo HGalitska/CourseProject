@@ -3,6 +3,11 @@
   display: inline-block;
 }
 
+.card-item {
+  width: 300px;
+  display: inline-block;
+}
+
 input {
   display: inline-block;
 }

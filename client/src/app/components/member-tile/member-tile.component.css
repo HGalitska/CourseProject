@@ -4,5 +4,6 @@
 }
 
 .card:hover {
-  background-color: lightgreen;
+  background-color: plum;
+  cursor: pointer;
 }

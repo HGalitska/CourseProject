@@ -1,46 +1,53 @@
-<p *ngIf="task">{{ task.title }}</p>
-<app-inline-edit *ngIf="task && editMode" [(ngModel)]=task.title (onSave)=saveChanges(task.title)></app-inline-edit>
-
-<button class="btn btn-outline-primary startEdit" (click)="enterEditingMode()" *ngIf="teacher">Edit Task</button>
-<button class="btn btn-danger deleteTask" (click)="deleteTask()" *ngIf="teacher && editMode">Delete Task</button>
+<div>
+  <h3 *ngIf="task">{{ course.name + ": " +task.title }}</h3>
+  <app-inline-edit *ngIf="task && editMode" [(ngModel)]=task.title (onSave)=saveChanges(task.title)></app-inline-edit>
 
 
-<p *ngIf="task">{{ task.description }}</p>
-<app-inline-edit *ngIf="task && editMode" [(ngModel)]=task.description
-                 (onSave)=saveChanges(task.description)></app-inline-edit>
+  <p *ngIf="task">{{ task.description }}</p>
+  <app-inline-edit *ngIf="task && editMode" [(ngModel)]=task.description
+                   (onSave)=saveChanges(task.description)></app-inline-edit>
 
 
-<p *ngIf="task">{{ task.deadline | date:'dd MMMM yyyy' }}</p>
-<app-inline-edit *ngIf="task && editMode" [(ngModel)]=task.deadline
-                 (onSave)=saveChanges(task.deadline)></app-inline-edit>
-
-
-<p>Documents for this task:</p>
-<app-doc-tile *ngFor="let doc of documents" [doc]="doc" [editMode]="editMode"></app-doc-tile>
-
-<div *ngIf="editMode">
-  <h2>Add Documents:</h2>
-  <app-file-uploader [type]="'task'" [task_id]="taskId"></app-file-uploader>
-  <button class="btn btn-outline-primary" (click)="update()">Update</button>
+  <p *ngIf="task" class="deadline">DEADLINE: {{ task.deadline | date:'dd MMMM yyyy' }}</p>
+  <app-inline-edit *ngIf="task && editMode" [(ngModel)]=task.deadline
+                   (onSave)=saveChanges(task.deadline)></app-inline-edit>
 </div>
+<div>
 
-<div *ngIf="teacher">
-  <h3>Completed tasks:</h3>
-  <app-submitted-tile *ngFor="let attempt of attempts" [submittedTask]="attempt"
-                      [teacher]="teacher"></app-submitted-tile>
-</div>
+  <h3>Documents for this task:</h3>
+  <app-doc-tile *ngFor="let doc of documents" [doc]="doc" [editMode]="editMode"></app-doc-tile>
 
-<div *ngIf="!teacher && course">
-  <div *ngIf="!uploaded">
-    <h4>Upload Completed Task:</h4>
-    <app-file-uploader [type]="'submitted'" [task_id]="taskId" [user_id]="currentUser"
-                       [course_id]="course._id"></app-file-uploader>
+  <div *ngIf="editMode">
+    <h2>Add Documents:</h2>
+    <app-file-uploader [type]="'task'" [task_id]="taskId"></app-file-uploader>
+    <button class="btn btn-outline-primary" (click)="update()">Update</button>
   </div>
+</div>
+<div>
 
-  <div *ngIf="attempts.length != 0">
-    <h4> My Submits: </h4>
-    <app-submitted-tile *ngFor="let attempt of attempts" [submittedTask]="attempt"></app-submitted-tile>
+  <br/>
+  <div *ngIf="teacher && attempts">
+    <h3>Completed tasks:</h3>
+    <app-submitted-tile *ngFor="let attempt of attempts" [submittedTask]="attempt"
+                        [teacher]="teacher"></app-submitted-tile>
   </div>
 </div>
 
-<button class="btn btn-outline-info" (click)="backToCourse()">Back to course</button>
+<div>
+  <div *ngIf="!teacher && course">
+    <div *ngIf="!uploaded">
+      <h4>Upload Completed Task:</h4>
+      <app-file-uploader [type]="'submitted'" [task_id]="taskId" [user_id]="currentUser"
+                         [course_id]="course._id"></app-file-uploader>
+    </div>
+
+    <div *ngIf="attempts.length != 0">
+      <h4> My Submits: </h4>
+      <app-submitted-tile *ngFor="let attempt of attempts" [submittedTask]="attempt"></app-submitted-tile>
+    </div>
+  </div>
+
+  <button class="btn btn-outline-primary startEdit" (click)="enterEditingMode()" *ngIf="teacher">Edit Task</button>
+  <button class="btn btn-danger deleteTask" (click)="deleteTask()" *ngIf="teacher && editMode">Delete Task</button>
+  <button class="btn btn-outline-info" (click)="backToCourse()">Back to course</button>
+</div>
