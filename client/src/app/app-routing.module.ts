@@ -5,15 +5,11 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { AboutComponent } from './components/about/about.component';
 import { CoursesComponent } from './components/courses/courses.component';
-import { ProgressComponent } from './components/progress/progress.component';
-import { SettingsComponent } from './components/settings/settings.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { HomeComponent } from './components/home/home.component';
 import { CoursePageComponent } from './components/course-page/course-page.component';
 import { TaskPageComponent } from './components/task-page/task-page.component';
 import {GroupPageComponent} from "./components/group-page/group-page.component";
-import {CourseCreateComponent} from "./components/course-create/course-create.component";
-
 const routes: Routes = [
   {
     path: 'profile', component: ProfileComponent,
@@ -22,8 +18,6 @@ const routes: Routes = [
       { path: 'course/:course_id',   component: CoursePageComponent},
       { path: 'task/:task_id',   component: TaskPageComponent},
       { path: 'course/:course_id/:group_id',   component: GroupPageComponent},
-      { path: 'progress', component: ProgressComponent},
-      { path: 'settings', component: SettingsComponent},
       { path: 'logout',   component: LogoutComponent}
     ]
   },

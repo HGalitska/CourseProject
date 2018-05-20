@@ -8,6 +8,7 @@
 <app-inline-edit *ngIf="course && editMode" [(ngModel)]=course.description (onSave)=saveChanges(course.description)></app-inline-edit>
 
 <p *ngIf="owner && !teacher">{{ owner.firstName + " " + owner.lastName }}</p>
+<p *ngIf="owner && !teacher">{{ owner.eMail}}</p>
 <h3>Materials:</h3>
 <app-doc-tile *ngFor="let doc of documents" [doc]="doc" [editMode]="editMode"></app-doc-tile>
 <div *ngIf="editMode">
@@ -21,7 +22,7 @@
   <app-task-tile *ngFor="let task of course.tasks" [taskId]="task"></app-task-tile>
 </p>
 
-<button class="btn btn-outline-primary" (click)="openTaskCreation()">Create Task</button>
+<button class="btn btn-outline-primary" (click)="openTaskCreation()" *ngIf="teacher">Create Task</button>
 
 <div *ngIf="teacher">
   <h3>Members:</h3>

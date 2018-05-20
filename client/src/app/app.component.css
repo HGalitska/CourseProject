@@ -1,3 +1,10 @@
-.jumbotron {
-  margin-top : 100px;
+.btn {
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
 }
+
+

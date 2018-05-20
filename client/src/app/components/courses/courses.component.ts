@@ -84,6 +84,7 @@ export class CoursesComponent implements OnInit {
     this.coursesService.addNewCourse(course, localStorage.getItem("currentToken")).subscribe(
       course => {
         console.log(course);
+        this.router.navigate(['/profile/course', course._id]);
       }
     )
   }

@@ -1,5 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
 body {
   font-family: "Avenir Next", ultralight;
-  /* font-family: "Poiret One"; */
+  background-color: #fbf1f5;
 }
+
+nav {
+  background: white;
+  font-family: "Poiret One";
+}
+
+navbar {
+  background: white;
+}
+
+.jumbotron {
+  margin: 50px;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 20px;
+  /*background: linear-gradient(to right, #ff6e7f, #bfe9ff);*/
+}
+
+.btn {
+  margin: 5px;
+}
+

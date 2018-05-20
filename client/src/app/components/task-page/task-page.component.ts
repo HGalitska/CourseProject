@@ -22,6 +22,7 @@ export class TaskPageComponent implements OnInit {
   teacher = false;
   editMode = false;
   course;
+  uploaded = false;
 
   constructor(private route: ActivatedRoute, private location: Location,
               private tasksService: TasksService, private documentsService: DocumentsService,

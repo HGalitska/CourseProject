@@ -17,8 +17,8 @@ export class CoursePageComponent implements OnInit {
   courseId: string;
   ownerId: string;
 
-  course: Object;
-  owner: Object;
+  course;
+  owner;
 
   documents = [];
   members = [];
