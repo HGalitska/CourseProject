@@ -16,7 +16,7 @@ export class SubmittedTileComponent implements OnInit {
   student;
   mark;
   documents = [];
-  marked = false;
+  marked = true;
 
   constructor(private documentsService: DocumentsService, private usersService: UsersService,
               private groupsService: GroupsService, private submittedTasksService: SubmittedTasksService) {

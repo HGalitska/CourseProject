@@ -1,14 +1,15 @@
 <div class="card-item">
-  <div class="card" ng-class="if(marked) evaluated;)">
+  <div class="card">
     <div class="card-body">
-      <p *ngIf="teacher && student && student.group">Completed:
+      <p class="card-title" *ngIf="teacher && student && student.group">
         {{ student.firstName + " " + student.lastName }}, {{student.group.name}}</p>
-      Date: <p class="card-title">{{ submittedTask.date | date:'dd MMMM yyyy'}}</p>
-      <p class="card-text" *ngIf="!teacher">Mark: {{ mark }} </p>
-      <p class="card-text evaluated" *ngIf="teacher">Mark: {{ mark }} </p>
+      <p class="card-text">{{ submittedTask.date | date:'dd MMMM yyyy'}}</p>
+      <p class="card-text">Mark: {{ mark }} </p>
       <app-inline-edit *ngIf="teacher" [(ngModel)]=mark (onSave)=saveChanges(mark)></app-inline-edit>
 
-      <app-doc-tile *ngFor="let doc of documents" [doc]="doc"></app-doc-tile>
+      <div class="card-group">
+        <app-doc-tile *ngFor="let doc of documents" [doc]="doc"></app-doc-tile>
+      </div>
     </div>
   </div>
 </div>

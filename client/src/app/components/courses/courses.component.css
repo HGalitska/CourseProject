@@ -1,14 +1,14 @@
 
-.btn {
-  border: 2px solid black;
-  background-color: white;
-  color: black;
-  padding: 14px 28px;
-  font-size: 16px;
-  cursor: pointer;
+#edit {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-left: 1000px;
+  filter: opacity(40%);
 }
 
-.create-button {
-
+#edit:hover {
+  cursor: pointer;
+  filter: opacity(100%);
 }
 

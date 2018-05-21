@@ -1,3 +1,10 @@
+.card {
+  /*height: 100%;*/
+  font-family: 'Josefin Slab', serif;
+  width: 200px;
+  padding: 7px;
+  height: 70px;
+}
 .card-item {
   display: inline-block;
   width: 200px;
@@ -5,22 +12,17 @@
   margin: 5px;
 }
 
-.card {
-  width: 200px;
-  height: 70px;
-  padding: 7px;
-}
-
 
 .doc-title {
+  font-family: "Avenir Next", ultralight;
   font-size: 12pt;
   padding: 2px;
+  text-transform: none;
 }
 
 .doc-title:hover {
-  font-size: 12pt;
-  color: mediumseagreen;
   cursor: pointer;
+  color: #D23F71;
 }
 
 .fa-close {

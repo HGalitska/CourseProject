@@ -1,18 +1,27 @@
-.card {
-  width: 300px;
-  display: inline-block;
-}
-
-.card-item {
-  width: 300px;
-  display: inline-block;
-}
-
 input {
   display: inline-block;
 }
 
-.evaluated {
-  background-color: green;
-  color: white;
+
+.card-item {
+  margin: 5px;
+  height: 300px;
+}
+
+.card {
+  font-family: 'Josefin Slab', serif;
+  width: 300px;
+  display: inline-block;
+}
+
+.card:hover {
+  /*color:white;*/
+  /*background-color: #D23F71;*/
+  cursor: pointer;
+}
+
+.card-title {
+  text-transform: uppercase;
+  font-size: 15pt;
+  display: inline-block;
 }

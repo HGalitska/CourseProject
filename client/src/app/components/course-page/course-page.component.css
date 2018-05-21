@@ -1,11 +1,8 @@
-.startEdit {
-  margin-left: 950px;
-  display: block;
-}
-
-.deleteCourse {
-  margin-left: 950px;
-  margin-bottom: 20px;
+#course-name {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Josefin Slab', serif;
+  font-size: 35pt;
 }
 
 #course-name {
@@ -39,3 +36,31 @@ h3 {
   font-size: 20px;
   text-align: center;
 }
+
+
+#add-task {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-left: 1000px;
+  filter: opacity(40%);
+}
+
+#add-task:hover {
+  cursor: pointer;
+  filter: opacity(100%);
+}
+
+#delete-course {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  margin-left: 1000px;
+  filter: opacity(40%);
+}
+
+#delete-course:hover {
+  cursor: pointer;
+  filter: opacity(100%);
+}
+

@@ -1,8 +1,7 @@
-<div class="card shadow-sm p-3 mb-5 bg-white rounded" >
+<div class="card shadow-sm p-3 mb-5 rounded hvr-buzz-out" (click)="openCoursePage()">
   <div class="card-body">
     <h4 class="card-title">{{ course.name }}</h4>
     <p class="card-text" *ngIf="!teacher">Owner: {{ ownerString }} </p>
     <p class="card-text" *ngIf="!teacher">Progress: {{ progress }}</p>
-    <button (click)="openCoursePage()" class="btn btn-success">Open</button>
   </div>
 </div>

@@ -4,7 +4,7 @@
     <div>
       <div *ngIf="doc">
         <span *ngIf="editMode" (click)="deleteFile()" class="fa fa-close"></span>
-      <span class="card-title doc-title" (click)="downloadFile()">{{ title }}</span></div>
+        <span class="card-title doc-title" (click)="downloadFile()">{{ title }}</span></div>
     </div>
 
     <div *ngIf="!editMode">
@@ -12,3 +12,4 @@
     <!--</div>-->
   </div>
 </div>
+

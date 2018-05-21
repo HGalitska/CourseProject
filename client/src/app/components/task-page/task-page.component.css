@@ -1,11 +1,8 @@
-.startEdit {
-  margin-left: 950px;
-  display: block;
-}
 
-.deleteTask {
-  margin-left: 950px;
-  margin-bottom: 20px;
+.task-name {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Josefin Slab', serif;
 }
 
 app-doc-tile {
@@ -14,4 +11,43 @@ app-doc-tile {
 
 .deadline {
   color: red;
+  font-family: 'Josefin Slab', serif;
+}
+
+#edit {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-left: 1000px;
+  filter: opacity(40%);
+}
+
+#edit:hover {
+  cursor: pointer;
+  filter: opacity(100%);
+}
+
+h3 {
+  text-transform: lowercase;
+  font-family: 'Josefin Slab', serif;
+  font-weight: lighter;
+  font-size: 25pt;
+}
+
+#description {
+  font-size: 20px;
+  text-align: center;
+}
+
+#delete-task {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  margin-left: 1000px;
+  filter: opacity(40%);
+}
+
+#delete-task:hover {
+  cursor: pointer;
+  filter: opacity(100%);
 }
