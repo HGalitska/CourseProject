@@ -12,7 +12,7 @@
   margin: 10px;
   margin-top: 55px;
   overflow-x: hidden; /* Disable horizontal scroll */
-  padding: 20px;
+  /*padding: 20px;*/
   margin-left: 50px;
 }
 
@@ -32,10 +32,10 @@
 
 /* Style page content */
 .main {
-  margin-top: 50px;
+  margin-top: 105px;
   margin-left: 280px; /* Same as the width of the sidebar */
   margin-right: 50px;
-  padding: 10px;
+  padding: 30px;
   /*height: 500px;*/
   max-height: 100%;
 }
@@ -53,7 +53,24 @@
 
 .avatar {
   vertical-align: middle;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  border-radius: 20%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#user-info {
+  position: relative;
+  width: 200px;
+  padding: 10px;
+  color: white;
+  background: linear-gradient(to bottom right, #bc4e9c, #f80759);
+  text-align: center;
+  font-family: 'Josefin Slab', serif;
+}
+
+#name{
+  font-weight: bold;
+  text-transform: uppercase;
 }

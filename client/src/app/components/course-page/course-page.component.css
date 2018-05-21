@@ -7,3 +7,35 @@
   margin-left: 950px;
   margin-bottom: 20px;
 }
+
+#course-name {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Josefin Slab', serif;
+  font-size: 35pt;
+}
+
+h3 {
+  text-transform: lowercase;
+  font-family: 'Josefin Slab', serif;
+  font-weight: lighter;
+  font-size: 25pt;
+}
+
+#edit {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-left: 1000px;
+  filter: opacity(40%);
+}
+
+#edit:hover {
+  cursor: pointer;
+  filter: opacity(100%);
+}
+
+#description {
+  font-size: 20px;
+  text-align: center;
+}

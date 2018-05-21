@@ -1,16 +1,17 @@
 <div>
   <div>
-    <h2 *ngIf="course">{{ course.name }}</h2>
+    <img src="../../assets/images/paint-brush.svg"  id="edit" alt="edit" (click)="enterEditingMode()" *ngIf="teacher">
+    <h2 *ngIf="course" id="course-name">{{ course.name }}</h2>
     <app-inline-edit *ngIf="course && editMode" [(ngModel)]=course.name
                      (onSave)=saveChanges(course.name)></app-inline-edit>
   </div>
-  <br/>
 
   <div>
-    <p *ngIf="course">{{ course.description }}</p>
+    <p *ngIf="course" id="description">{{ course.description }}</p>
     <app-inline-edit *ngIf="course && editMode" [(ngModel)]=course.description
                      (onSave)=saveChanges(course.description)></app-inline-edit>
   </div>
+  <hr>
 
   <p *ngIf="owner && !teacher">{{ owner.firstName + " " + owner.lastName }}</p>
   <p *ngIf="owner && !teacher">{{ owner.eMail}}</p>
@@ -21,17 +22,18 @@
     </li>
   </ul>
   <div *ngIf="editMode">
-    <h2>Add Materials:</h2>
+    <h3>Add Materials:</h3>
     <app-file-uploader [type]="'material'" [course_id]="courseId"></app-file-uploader>
     <!--<button class="btn btn-outline-primary" (click)="update()">Update</button>-->
   </div>
+  <hr>
 
   <h3>Tasks:</h3>
   <p *ngIf="course">
     <app-task-tile *ngFor="let task of course.tasks" [taskId]="task"></app-task-tile>
   </p>
+  <hr>
 
-  <button class="btn btn-outline-primary" (click)="openTaskCreation()" *ngIf="teacher">Create Task</button>
 
   <div *ngIf="teacher">
     <h3>Members:</h3>
@@ -40,7 +42,10 @@
     </p>
   </div>
 
-  <button class="btn btn-outline-primary startEdit" (click)="enterEditingMode()" *ngIf="teacher">Edit Course</button>
+  <!--<button class="btn btn-outline-primary startEdit" (click)="enterEditingMode()" *ngIf="teacher">Edit Course</button>-->
+  <!--<img src="../../assets/images/paint-brush.svg" alt="edit" (click)="enterEditingMode()" *ngIf="teacher">-->
+
+  <button class="btn btn-outline-primary" (click)="openTaskCreation()" *ngIf="teacher && editMode">Create Task</button>
   <button class="btn btn-danger deleteCourse" (click)="deleteCourse()" *ngIf="teacher && editMode">Delete Course
   </button>
 </div>
