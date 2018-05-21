@@ -6,8 +6,9 @@ body {
 
 nav {
   /*background: linear-gradient(to bottom right, #bc4e9c, #f80759);*/
-  background-color: #D23F71;
+  /*background-color: #D23F71;*/
   /*font-family: "Poiret One";*/
+  background: linear-gradient(to bottom left, #bc4e9c, #f80759);
   font-family: 'Josefin Slab', serif;
   text-transform: uppercase;
   position: fixed;

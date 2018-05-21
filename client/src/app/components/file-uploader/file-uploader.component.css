@@ -1,0 +1,8 @@
+.fa {
+  font-size: 20pt;
+}
+
+.fa:hover {
+  color: #0F9E5E;
+  cursor: pointer;
+}

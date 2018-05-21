@@ -1,5 +1,7 @@
 <div>
   <div>
+    <img src="../../assets/images/left-arrow.svg"id="back" (click)="backToCourse()">
+
     <img src="../../assets/images/paint-brush.svg" id="edit" alt="edit" (click)="enterEditingMode()" *ngIf="teacher">
     <p *ngIf="course" class="task-name">({{course.name}})</p>
     <h3 *ngIf="task" class="task-name">{{task.title }}</h3>
@@ -16,23 +18,22 @@
     <app-inline-edit *ngIf="task && editMode" [(ngModel)]=task.deadline
                      (onSave)=saveChanges(task.deadline)></app-inline-edit>
   </div>
-  <hr>
   <div>
 
-    <h3>materials:</h3>
+    <hr>
+    <h3 *ngIf="documents">materials:</h3>
     <app-doc-tile *ngFor="let doc of documents" [doc]="doc" [editMode]="editMode"></app-doc-tile>
 
     <div *ngIf="editMode">
       <h2>add materials:</h2>
       <app-file-uploader [type]="'task'" [task_id]="taskId"></app-file-uploader>
-      <button class="btn btn-outline-primary" (click)="update()">Update</button>
     </div>
   </div>
   <div>
     <hr>
 
     <br/>
-    <div *ngIf="teacher && attempts">
+    <div *ngIf="teacher && attempts.length != 0">
       <h3>Completed tasks:</h3>
       <div class="card-group">
         <app-submitted-tile *ngFor="let attempt of attempts" [submittedTask]="attempt"
@@ -59,6 +60,5 @@
 
     <img src="../../assets/images/trash.svg" id="delete-task" alt="delete-task" (click)="deleteTask()"
          *ngIf="teacher && editMode">
-    <button class="btn btn-outline-info" (click)="backToCourse()">Back to course</button>
   </div>
 </div>

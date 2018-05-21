@@ -6,9 +6,10 @@
 }
 
 .card:hover {
-  color:white;
-  background-color: #D23F71;
+  /*color:white;*/
+  /*background-color: #D23F71;*/
   cursor: pointer;
+  /*background: linear-gradient(to bottom right, #bc4e9c, #f80759);*/
 }
 
 .card-title {

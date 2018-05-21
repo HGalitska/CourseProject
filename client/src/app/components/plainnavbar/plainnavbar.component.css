@@ -1,1 +1,12 @@
+#logout {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  margin-left: 1050px;
+  filter: opacity(40%);
+}
 
+#logout:hover {
+  cursor: pointer;
+  filter: opacity(100%);
+}

@@ -1,14 +1,12 @@
 <app-plainnavbar></app-plainnavbar>
 
 <!-- Side navigation -->
-<div class="sidenav">
+<div class="sidenav hvr-shadow" routerLink="courses">
   <div id="user-info">
     <img src="../../assets/images/studying.svg" alt="Avatar" class="avatar mx-auto d-block">
     <p>@{{ currentUser.username }}</p>
     <p><span id="name">{{ currentUser.firstName }} {{ currentUser.lastName }}</span></p>
   </div>
-  <a routerLink="courses">my courses</a>
-  <a routerLink="logout">log out</a>
 </div>
 
 <!-- Page content -->

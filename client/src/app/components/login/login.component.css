@@ -1,7 +1,7 @@
-.btn-outline.success {
-  outline-color: #77A1D3;
-}
 
-.btn-outline-success:hover {
-  background-color: #77A1D3;
+
+input {
+  outline: none;
+  box-shadow:none !important;
+  border:1px solid #ccc !important;
 }

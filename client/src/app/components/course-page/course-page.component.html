@@ -15,7 +15,7 @@
 
   <p *ngIf="owner && !teacher">{{ owner.firstName + " " + owner.lastName }}</p>
   <p *ngIf="owner && !teacher">{{ owner.eMail}}</p>
-  <h3>Materials:</h3>
+  <h3 *ngIf="documents">Materials:</h3>
   <ul class="list-unstyled">
     <li>
       <app-doc-tile *ngFor="let doc of documents" [doc]="doc" [editMode]="editMode"></app-doc-tile>
