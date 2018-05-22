@@ -1,5 +1,6 @@
 <div class="card-item">
   <div class="card hvr-shadow" (click)="openTaskPage()">
+    <div id="mark" *ngIf="completed && mark">{{mark}}</div>
     <div class="card-body">
       <h4 class="card-title" *ngIf="task">{{ task.title }}</h4>
       <br>

@@ -20,9 +20,11 @@
   </div>
   <div>
 
+    <div *ngIf="documents.length!=0">
     <hr>
-    <h3 *ngIf="documents">materials:</h3>
+    <h3 >materials:</h3>
     <app-doc-tile *ngFor="let doc of documents" [doc]="doc" [editMode]="editMode"></app-doc-tile>
+    </div>
 
     <div *ngIf="editMode">
       <h2>add materials:</h2>

@@ -10,3 +10,7 @@
   cursor: pointer;
   filter: opacity(100%);
 }
+
+#name {
+  color: black;
+}

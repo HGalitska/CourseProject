@@ -3,6 +3,8 @@
   font-family: 'Josefin Slab', serif;
   width: 300px;
   display: inline-block;
+  margin-left: 40px;
+  height: 200px;
 }
 
 .card:hover {

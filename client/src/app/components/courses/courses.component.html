@@ -1,4 +1,2 @@
 <img src="../../assets/images/add.svg" id="edit" alt="edit" (click)="openCourseCreation()" *ngIf="teacher">
-<div card-group>
   <app-course *ngFor="let course of courses" [course]="course" [teacher]="teacher"></app-course>
-</div>

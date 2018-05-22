@@ -2,6 +2,7 @@
   <div>
     <img src="../../assets/images/paint-brush.svg" id="edit" alt="edit" (click)="enterEditingMode()" *ngIf="teacher">
     <h2 *ngIf="course" id="course-name">{{ course.name }}</h2>
+    <p class="text-muted" *ngIf="owner && !teacher">Owner: {{ owner.firstName + " " + owner.lastName }} ({{ owner.eMail}})</p>
     <app-inline-edit *ngIf="course && editMode" [(ngModel)]=course.name
                      (onSave)=saveChanges(course.name)></app-inline-edit>
   </div>
@@ -12,9 +13,6 @@
                      (onSave)=saveChanges(course.description)></app-inline-edit>
   </div>
   <hr>
-
-  <p *ngIf="owner && !teacher">{{ owner.firstName + " " + owner.lastName }}</p>
-  <p *ngIf="owner && !teacher">{{ owner.eMail}}</p>
   <h3 *ngIf="documents">Materials:</h3>
   <ul class="list-unstyled">
     <li>

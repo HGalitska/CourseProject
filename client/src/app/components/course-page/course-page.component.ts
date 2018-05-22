@@ -123,6 +123,7 @@ export class CoursePageComponent implements OnInit {
           course => {
             console.log(course);
             this.course = course;
+            this.router.navigate(['/profile/task', task._id]);
           }
         )
       }

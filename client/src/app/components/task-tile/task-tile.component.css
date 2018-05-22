@@ -25,3 +25,14 @@
 #deadline {
   color: darkred;
 }
+
+#mark {
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  background: linear-gradient(to bottom right, #bc4e9c, #f80759);
+  color: white;
+  margin: 5px;
+  text-align: center;
+  font-size: 15pt;
+}
