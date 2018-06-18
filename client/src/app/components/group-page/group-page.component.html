@@ -7,7 +7,7 @@
       <th>#</th>
       <th>Name</th>
       <td *ngFor="let task of tasks">
-        <p>{{task.title.substring(0, 10)}}...</p>
+        <p>{{task.title.substring(0, 10)}}.. - {{task.maxMark}}</p>
         <p>({{task.deadline | date:'dd MMMM yyyy'}})</p>
       </td>
       <!--<th *ngFor="let task of tasks"> Task </th>-->
@@ -20,11 +20,11 @@
       <td>{{ student.firstName + " " + student.lastName }}</td>
       <td *ngFor="let submittedTask of student.submittedTasks">
         <p *ngIf="submittedTask && submittedTask.mark == -1"> to review </p>
-        <p *ngIf="submittedTask && submittedTask.mark != -1">{{submittedTask.mark }}</p>
+        <p *ngIf="submittedTask && submittedTask.mark != -1">{{submittedTask.mark}}</p>
       </td>
       <!--<td *ngFor="let i of Arr(tasks.length - student.submittedTasks.length).fill(1)"></td>-->
-      <td> 0 </td>
-      <td> 0 % </td>
+      <td> {{student.totalMark}} </td>
+      <td> {{student.totalResult}} % </td>
 
     </tr>
 

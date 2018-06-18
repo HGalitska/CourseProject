@@ -75,19 +75,28 @@ export class GroupPageComponent implements OnInit {
               this.usersService.getUserById(group.students[i], localStorage.getItem("currentToken")).subscribe(
                 user => {
                   user.submittedTasks = [];
+                  user.totalMark = 0;
+                  user.totalResult = 0;
+
                   user.submittedTasks.length = this.tasks.length;
                   this.students.push(user);
 
+                  var maximalTotal = 0;
                   this.submittedTasksService.getAllSubmittedTasks(localStorage.getItem("currentToken")).subscribe(
                     submittedTasks => {
                       submittedTasks.forEach((submittedTask) => {
                         if (course.tasks.includes(submittedTask.task_id)) {
                           if (submittedTask.student_id == user._id) {
+
                             this.tasks.forEach((task) => {
+
+                              maximalTotal += task.maxMark;
                               if (task._id == submittedTask.task_id) {
                                 submittedTask.task = task;
                                 user.submittedTasks[this.tasks.indexOf(task)] = submittedTask;
-                                console.log(user.submittedTasks);
+                                if (submittedTask.mark != -1) {
+                                  user.totalMark += submittedTask.mark;
+                                }
 
 
                               }
@@ -95,6 +104,10 @@ export class GroupPageComponent implements OnInit {
                           }
                         }
                       })
+                      if (maximalTotal != 0) {
+                        user.totalResult = parseFloat(user.totalMark / maximalTotal * 100).toFixed(2);
+                        console.log(user);
+                      }
                     })
 
                   this.students.sort(function (a, b) {

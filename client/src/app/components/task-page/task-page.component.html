@@ -1,6 +1,6 @@
 <div>
   <div>
-    <img src="../../assets/images/left-arrow.svg"id="back" (click)="backToCourse()">
+    <img src="../../assets/images/left-arrow.svg" id="back" (click)="backToCourse()">
 
     <img src="../../assets/images/paint-brush.svg" id="edit" alt="edit" (click)="enterEditingMode()" *ngIf="teacher">
     <p *ngIf="course" class="task-name">({{course.name}})</p>
@@ -17,13 +17,17 @@
     <p *ngIf="task" class="deadline">DEADLINE: {{ task.deadline | date:'dd MMMM yyyy' }}</p>
     <app-inline-edit *ngIf="task && editMode" [(ngModel)]=task.deadline
                      (onSave)=saveChanges(task.deadline)></app-inline-edit>
+    <p *ngIf="task">MAX: {{ task.maxMark }}</p>
+    <app-inline-edit *ngIf="task && editMode" [(ngModel)]=task.maxMark
+                     (onSave)=saveChanges(task.maxMark)></app-inline-edit>
+
   </div>
   <div>
 
     <div *ngIf="documents.length!=0">
-    <hr>
-    <h3 >materials:</h3>
-    <app-doc-tile *ngFor="let doc of documents" [doc]="doc" [editMode]="editMode"></app-doc-tile>
+      <hr>
+      <h3>materials:</h3>
+      <app-doc-tile *ngFor="let doc of documents" [doc]="doc" [editMode]="editMode"></app-doc-tile>
     </div>
 
     <div *ngIf="editMode">

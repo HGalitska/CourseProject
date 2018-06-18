@@ -6,6 +6,7 @@
       <br>
       <p class="card-text" *ngIf="task">Description: {{ task.description }} </p>
       <p class="card-text" *ngIf="task" id="deadline">Deadline: {{ task.deadline | date:'dd MMMM yyyy'}}</p>
+      <p class="card-text" *ngIf="task">Maximal Mark: {{ task.maxMark }} </p>
     </div>
   </div>
 </div>
