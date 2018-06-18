@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginnavbarComponent implements OnInit {
 
+  currentUserId = null;
+
   constructor() { }
 
   ngOnInit() {
+    this.currentUserId = localStorage.getItem("currentUserId");
+    console.log(this.currentUserId);
   }
 
 }

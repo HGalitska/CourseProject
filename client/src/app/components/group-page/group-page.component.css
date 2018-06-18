@@ -1,0 +1,36 @@
+#title {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 17pt;
+}
+
+table {
+  font-size: 13pt;
+  counter-reset: rowNumber;
+}
+
+table tr {
+  counter-increment: rowNumber;
+}
+
+table tr td:first-child::before {
+  content: counter(rowNumber);
+  min-width: 1em;
+}
+
+#count {
+  text-align: center;
+}
+
+#back {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  filter: opacity(40%);
+}
+
+#back:hover {
+  cursor: pointer;
+  filter: opacity(100%);
+}
+

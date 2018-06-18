@@ -47,18 +47,35 @@ export class GroupPageComponent implements OnInit {
           this.tasksService.getTaskById(course.tasks[i], localStorage.getItem("currentToken")).subscribe(
             task => {
               this.tasks.push(task);
-            }
-          )
+
+              this.tasks.sort(function (a, b) {
+                // Use toUpperCase() to ignore character casing
+                const sA = a._id;
+                const sB = b._id;
+
+                let comparison = 0;
+                if (sA > sB) {
+                  comparison = 1;
+                } else if (sA < sB) {
+                  comparison = -1;
+                }
+                return comparison;
+              });
+            })
+
+
+
         }
 
         this.groupsService.getGroupById(this.groupId, localStorage.getItem("currentToken")).subscribe(
           group => {
             this.group = group;
-            group.students.sort(function(a, b){return a._id - b._id})
+
             for (var i = 0; i < group.students.length; i++) {
               this.usersService.getUserById(group.students[i], localStorage.getItem("currentToken")).subscribe(
                 user => {
                   user.submittedTasks = [];
+                  user.submittedTasks.length = this.tasks.length;
                   this.students.push(user);
 
                   this.submittedTasksService.getAllSubmittedTasks(localStorage.getItem("currentToken")).subscribe(
@@ -69,7 +86,10 @@ export class GroupPageComponent implements OnInit {
                             this.tasks.forEach((task) => {
                               if (task._id == submittedTask.task_id) {
                                 submittedTask.task = task;
-                                user.submittedTasks.push(submittedTask);
+                                user.submittedTasks[this.tasks.indexOf(task)] = submittedTask;
+                                console.log(user.submittedTasks);
+
+
                               }
                             })
                           }
@@ -77,8 +97,23 @@ export class GroupPageComponent implements OnInit {
                       })
                     })
 
+                  this.students.sort(function (a, b) {
+                    // Use toUpperCase() to ignore character casing
+                    const sA = a.lastName.toUpperCase();
+                    const sB = b.lastName.toUpperCase();
+
+                    let comparison = 0;
+                    if (sA > sB) {
+                      comparison = 1;
+                    } else if (sA < sB) {
+                      comparison = -1;
+                    }
+                    return comparison;
+                  });
+
                 })
             }
+
           })
 
 

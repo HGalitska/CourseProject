@@ -1,25 +1,32 @@
 <div *ngIf="group && course">
-  <p>{{group.name}} ({{course.name}})</p>
+  <img src="../../assets/images/left-arrow.svg" id="back" (click)="backToCourse()">
+  <p id="title">{{group.name}}: {{course.name}}</p>
   <!--<p *ngFor="let student of students">{{ student.firstName + " " + student.lastName }}</p>-->
   <table class="table table-bordered">
-    <!--<tr>-->
-      <!--<td>Name</td>-->
-      <!--&lt;!&ndash;<td *ngFor="let task of tasks">{{task.title}} ({{task.deadline | date:'dd MMMM yyyy'}})</td>&ndash;&gt;-->
-      <!--<td *ngFor="let task of tasks"> Task </td>-->
-      <!--<td>Total</td>-->
-    <!--</tr>-->
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <td *ngFor="let task of tasks">
+        <p>{{task.title.substring(0, 10)}}...</p>
+        <p>({{task.deadline | date:'dd MMMM yyyy'}})</p>
+      </td>
+      <!--<th *ngFor="let task of tasks"> Task </th>-->
+      <th>Total mark</th>
+      <th>Total %</th>
+
+    </tr>
     <tr *ngFor="let student of students">
+      <td id="count"></td>
       <td>{{ student.firstName + " " + student.lastName }}</td>
       <td *ngFor="let submittedTask of student.submittedTasks">
-        <p *ngIf="submittedTask.mark == -1"> {{submittedTask.task.title}} : to review </p>
-        <!--<p *ngIf="submittedTask.mark == -1"> not reviewed </p>-->
-        <p *ngIf="submittedTask.mark != -1"> {{submittedTask.task.title}} : {{submittedTask.mark }}</p>
+        <p *ngIf="submittedTask && submittedTask.mark == -1"> to review </p>
+        <p *ngIf="submittedTask && submittedTask.mark != -1">{{submittedTask.mark }}</p>
       </td>
-      <td *ngFor="let i of Arr(tasks.length - student.submittedTasks.length).fill(1)"></td>
-      <td> {{student.submittedTasks.length / tasks.length * 100}} % </td>
+      <!--<td *ngFor="let i of Arr(tasks.length - student.submittedTasks.length).fill(1)"></td>-->
+      <td> 0 </td>
+      <td> 0 % </td>
+
     </tr>
 
   </table>
-
-  <button class="btn btn-outline-info" (click)="backToCourse()">Back to course</button>
 </div>
