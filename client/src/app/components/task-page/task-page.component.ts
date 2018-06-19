@@ -94,6 +94,11 @@ export class TaskPageComponent implements OnInit {
   }
 
   deleteTask() {
+    var del = confirm("Do you really want to delete this task?");
+    if (!del){
+      return;
+    }
+
     this.tasksService.deleteTaskById(this.taskId, localStorage.getItem("currentToken")).subscribe(
       task => {
         console.log(task);

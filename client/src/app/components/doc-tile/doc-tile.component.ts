@@ -28,7 +28,12 @@ export class DocTileComponent implements OnInit {
   }
 
   deleteFile(){
+    var del = confirm("Do you really want to delete this file?");
+    if (!del){
+      return;
+    }
     const docId = this.doc._id;
+
 
     this.documentsService.deleteDocumentById(docId, localStorage.getItem("currentToken")).subscribe(
       deleted => {

@@ -98,6 +98,12 @@ export class CoursePageComponent implements OnInit {
   }
 
   deleteCourse() {
+    var del = confirm("Do you really want to delete this course?");
+    if (!del){
+      return;
+    }
+
+
     this.coursesService.deleteCourseById(this.courseId, localStorage.getItem("currentToken")).subscribe(
       course => {
         console.log(course);
