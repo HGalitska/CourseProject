@@ -1,0 +1,15 @@
+<app-plainnavbar></app-plainnavbar>
+
+<!-- Side navigation -->
+<div class="sidenav hvr-shadow">
+  <div id="user-info">
+    <img src="../../assets/images/studying.svg" alt="Avatar" class="avatar mx-auto d-block">
+    <p>ADMIN</p>
+  </div>
+</div>
+
+<!-- Page content -->
+<div class="jumbotron main">
+  <app-group-tile *ngFor="let group of groups" [group]="group"></app-group-tile>
+  <router-outlet></router-outlet>
+</div>

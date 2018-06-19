@@ -13,6 +13,7 @@ export class AppComponent implements OnInit{
 
   constructor(localStorage: CoolLocalStorage) {
         this.localStorage = localStorage;
+        this.localStorage.setItem("adminId", "5b28daac0cd50203c909d550")
     }
 
     ngOnInit() {

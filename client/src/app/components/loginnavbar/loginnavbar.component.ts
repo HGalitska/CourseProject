@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UsersService} from "../../services/users.service";
 
 @Component({
   selector: 'app-loginnavbar',
@@ -7,13 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginnavbarComponent implements OnInit {
 
-  currentUserId = null;
+  currentUserId = localStorage.getItem("currentUserId");
+  currentUser = null;
 
-  constructor() { }
+  constructor(private usersService : UsersService) { }
 
   ngOnInit() {
-    this.currentUserId = localStorage.getItem("currentUserId");
-    console.log(this.currentUserId);
+    console.log(this.currentUser);
+
+    this.usersService.getUserById(this.currentUserId, localStorage.getItem("currentToken")).subscribe(
+      user => {
+        this.currentUser = user;
+      }
+    )
   }
 
 }

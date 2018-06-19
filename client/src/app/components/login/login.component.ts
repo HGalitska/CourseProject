@@ -21,7 +21,13 @@ export class LoginComponent {
         localStorage.setItem("currentUserId", decode(data.token).user_id);
         localStorage.setItem("currentToken", data.token);
 
-        this.router.navigate(['/profile/courses']);
+        if (localStorage.getItem("currentUserId") == localStorage.getItem("adminId")) {
+          this.router.navigate(['/admin']);
+        }
+
+        else {
+          this.router.navigate(['/profile/courses']);
+        }
       });
   }
 }

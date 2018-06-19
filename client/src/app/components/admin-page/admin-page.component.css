@@ -1,0 +1,65 @@
+/* The sidebar menu */
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 200px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 50px; /* Stay at the top */
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  height: 240px;
+  border-radius: 5px;
+  margin-top: 55px;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  margin-left: 50px;
+
+  outline: none;
+}
+
+.main {
+  max-height: 200%;
+  margin-top: 105px;
+  margin-left: 280px; /* Same as the width of the sidebar */
+  margin-right: 50px;
+  padding: 30px;
+
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 120px;
+  height: 120px;
+  border-radius: 20%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#user-info {
+  position: relative;
+  width: 200px;
+  padding: 10px;
+  color: white;
+  background: linear-gradient(to bottom right, #bc4e9c, #f80759);
+  text-align: center;
+  font-family: 'Josefin Slab', serif;
+}
+
+#user-info:hover {
+  cursor: pointer;
+}
+
+#name{
+  font-weight: bold;
+  text-transform: uppercase;
+}

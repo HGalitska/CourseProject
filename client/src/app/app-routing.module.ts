@@ -10,7 +10,15 @@ import { HomeComponent } from './components/home/home.component';
 import { CoursePageComponent } from './components/course-page/course-page.component';
 import { TaskPageComponent } from './components/task-page/task-page.component';
 import {GroupPageComponent} from "./components/group-page/group-page.component";
+import {AdminPageComponent} from "./components/admin-page/admin-page.component";
+import {GroupEditPageComponent} from "./components/group-edit-page/group-edit-page.component";
 const routes: Routes = [
+  {
+    path: 'admin', component: AdminPageComponent,
+    children: [
+      {path: 'group/:group_id', component: GroupEditPageComponent}
+    ]
+  },
   {
     path: 'profile', component: ProfileComponent,
     children: [

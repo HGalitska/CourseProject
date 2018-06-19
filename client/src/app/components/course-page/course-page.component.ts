@@ -50,7 +50,6 @@ export class CoursePageComponent implements OnInit {
         }
 
         for (var i = 0; i < data.members.length; i++) {
-          console.log(data.members[i]);
           this.groupsService.getGroupById(data.members[i], localStorage.getItem("currentToken")).subscribe(
             group => {
 
@@ -91,7 +90,6 @@ export class CoursePageComponent implements OnInit {
   saveChanges(value) {
     this.coursesService.updateCourseById(this.courseId, localStorage.getItem("currentToken"), this.course).subscribe(
       course => {
-        console.log(course);
         this.course = course;
       }
     )
@@ -122,12 +120,9 @@ export class CoursePageComponent implements OnInit {
 
     this.tasksService.addNewTask(task, localStorage.getItem("currentToken")).subscribe(
       task => {
-        console.log(task);
-
         this.course.tasks.push(task._id);
         this.coursesService.updateCourseById(this.courseId, localStorage.getItem("currentToken"), this.course).subscribe(
           course => {
-            console.log(course);
             this.course = course;
             // this.router.navigate(['/profile/task', task._id]);
           }

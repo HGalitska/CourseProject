@@ -2,4 +2,11 @@ nav {
   background: white;
 }
 
+#username {
+  margin-right: 30px;
 
+}
+
+#username:hover {
+  cursor: pointer;
+}

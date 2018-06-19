@@ -17,7 +17,9 @@ export class MemberTileComponent implements OnInit {
   }
 
   openGroupPage(){
-    this.router.navigate(['/profile/course', this.course._id, this.member._id])
+
+      this.router.navigate(['/profile/course', this.course._id, this.member._id])
+
   }
 
 }
