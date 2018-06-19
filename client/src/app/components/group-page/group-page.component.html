@@ -3,21 +3,21 @@
   <p id="title">{{group.name}}: {{course.name}}</p>
   <!--<p *ngFor="let student of students">{{ student.firstName + " " + student.lastName }}</p>-->
   <table class="table table-bordered">
-    <tr>
+    <tr id="header">
       <th>#</th>
       <th>Name</th>
       <td *ngFor="let task of tasks">
-        <p>{{task.title.substring(0, 10)}}.. - {{task.maxMark}}</p>
+        <p>{{task.title.substring(0, 15)}}.. - {{task.maxMark}}</p>
         <p>({{task.deadline | date:'dd MMMM yyyy'}})</p>
       </td>
       <!--<th *ngFor="let task of tasks"> Task </th>-->
-      <th>Total mark</th>
+      <th>Total mark - {{maximalTotal}}</th>
       <th>Total %</th>
 
     </tr>
     <tr *ngFor="let student of students">
       <td id="count"></td>
-      <td>{{ student.firstName + " " + student.lastName }}</td>
+      <td>{{ student.lastName + " " + student.firstName }}</td>
       <td *ngFor="let submittedTask of student.submittedTasks">
         <p *ngIf="submittedTask && submittedTask.mark == -1"> to review </p>
         <p *ngIf="submittedTask && submittedTask.mark != -1">{{submittedTask.mark}}</p>

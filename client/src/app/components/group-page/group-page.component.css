@@ -9,7 +9,16 @@ table {
   counter-reset: rowNumber;
 }
 
-table tr {
+th {
+  font-weight: normal;
+  text-align: center;
+}
+
+td, th {
+  vertical-align: middle;
+}
+
+table tr:not(#header) {
   counter-increment: rowNumber;
 }
 
