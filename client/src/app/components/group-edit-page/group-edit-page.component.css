@@ -1,0 +1,46 @@
+#title {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 17pt;
+}
+
+table {
+  font-size: 13pt;
+  counter-reset: rowNumber;
+}
+
+th {
+  font-weight: normal;
+  text-align: center;
+}
+
+td, th {
+  vertical-align: middle;
+}
+
+table tr:not(#header) {
+  counter-increment: rowNumber;
+}
+
+table tr td:first-child::before {
+  content: counter(rowNumber);
+  min-width: 1em;
+}
+
+#count {
+  text-align: center;
+}
+
+#edit {
+  text-align: center;
+}
+
+#delete:hover {
+  color: red;
+  cursor: pointer;
+}
+
+#move:hover {
+  color: green;
+  cursor: pointer;
+}

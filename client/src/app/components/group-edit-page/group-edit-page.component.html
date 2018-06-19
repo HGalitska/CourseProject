@@ -1,3 +1,24 @@
-<p>
-  group-edit-page works!
-</p>
+<div *ngIf="group">
+  <p></p>
+  <p id="title">{{group.name}}</p>
+  <table class="table table-bordered">
+    <tr id="header">
+      <th>#</th>
+      <th>Name</th>
+      <th>E-Mail</th>
+      <th>Username</th>
+      <th>Edit</th>
+    </tr>
+    <tr *ngFor="let student of students">
+      <td id="count"></td>
+      <td>{{ student.lastName + " " + student.firstName }}</td>
+      <td>{{student.eMail}}</td>
+      <td>{{student.username}}</td>
+      <td id="edit">
+        <span (click)="removeStudent(student)" id="delete">delete</span>
+        <span (click)="moveStudent(student)" id="move">move</span>
+      </td>
+    </tr>
+
+  </table>
+</div>
