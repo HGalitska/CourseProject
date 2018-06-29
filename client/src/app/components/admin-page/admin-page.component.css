@@ -63,3 +63,16 @@
   font-weight: bold;
   text-transform: uppercase;
 }
+
+#add-group {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-left: 1000px;
+  filter: opacity(40%);
+}
+
+#add-group:hover {
+  cursor: pointer;
+  filter: opacity(100%);
+}

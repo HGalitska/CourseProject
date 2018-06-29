@@ -10,6 +10,7 @@
 
 <!-- Page content -->
 <div class="jumbotron main">
+  <img src="../../assets/images/add.svg" id="add-group" (click)="addGroup()">
   <app-group-tile *ngFor="let group of groups" [group]="group"></app-group-tile>
   <router-outlet></router-outlet>
 </div>

@@ -1,5 +1,4 @@
 #title {
-  text-transform: uppercase;
   text-align: center;
   font-size: 17pt;
 }
@@ -42,5 +41,16 @@ table tr td:first-child::before {
 
 #move:hover {
   color: green;
+  cursor: pointer;
+}
+
+.util {
+  font-size: 10pt;
+  color: grey;
+  text-transform: lowercase;
+  vertical-align: middle;
+}
+
+.util:hover {
   cursor: pointer;
 }

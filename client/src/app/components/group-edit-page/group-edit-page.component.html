@@ -1,6 +1,7 @@
 <div *ngIf="group">
   <p></p>
-  <p id="title">{{group.name}}</p>
+  <p id="title">{{group.name}}<span class="util" (click)="renameGroup()">  rename</span>
+    <span class="util" (click)="addStudent()">/ add student</span></p>
   <table class="table table-bordered">
     <tr id="header">
       <th>#</th>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {GroupsService} from "../../services/groups.service";
 import {UsersService} from "../../services/users.service";
@@ -15,10 +15,13 @@ export class GroupEditPageComponent implements OnInit {
 
   students = [];
 
-  constructor(private route: ActivatedRoute, private groupsService : GroupsService,
-              private usersService : UsersService) { }
+  constructor(private route: ActivatedRoute, private groupsService: GroupsService,
+              private usersService: UsersService) {
+  }
 
   ngOnInit() {
+
+    //TODO: need to update group after choosing another one
     this.route.params.subscribe(params => {
       this.groupId = params.group_id;
     });
@@ -56,12 +59,23 @@ export class GroupEditPageComponent implements OnInit {
     }
   }
 
-  //TODO: rename group
+  renameGroup() {
+    var newName = prompt("Change " + this.group.name + " to ");
+
+    if (!newName) return
+
+    this.group.name = newName;
+
+    this.groupsService.updateGroupById(this.groupId, localStorage.getItem("currentToken"), this.group).subscribe(
+      group => {
+      }
+    )
+  }
 
   removeStudent(student) {
     var del = confirm("Do you really want to delete " + student.lastName + " " + student.firstName +
       " from " + this.group.name + "?");
-    if (!del){
+    if (!del) {
       return;
     }
 
@@ -89,7 +103,7 @@ export class GroupEditPageComponent implements OnInit {
             var match = true;
             var move = confirm("Do you really want to move " + student.lastName + " " + student.firstName +
               " to " + group.name + "?");
-            if (!move){
+            if (!move) {
               return;
             }
             else {
@@ -119,4 +133,26 @@ export class GroupEditPageComponent implements OnInit {
 
   }
 
+  //TODO: add student + alphabetic order
+  addStudent() {
+    console.log("adding student");
+    var searchUsername = prompt("Enter username:");
+    if (!searchUsername) return
+
+    this.usersService.getAllUsers(localStorage.getItem("currentToken")).subscribe(
+      users => {
+        users.forEach(user =>
+        {
+          if (user.username == searchUsername) {
+            //if user is in group, ask if admin wants to move him/her ? -> move to current group
+            //else add user to current group
+            //refresh students` order?
+            //update current group
+          }
+        })
+        alert("User not found.")
+      }
+    )
+
+  }
 }
