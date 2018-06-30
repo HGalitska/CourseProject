@@ -133,24 +133,36 @@ export class GroupEditPageComponent implements OnInit {
 
   }
 
-  //TODO: add student + alphabetic order
+  //TODO: refresh on changes
   addStudent() {
-    console.log("adding student");
     var searchUsername = prompt("Enter username:");
     if (!searchUsername) return
 
     this.usersService.getAllUsers(localStorage.getItem("currentToken")).subscribe(
       users => {
+
+        var found = false;
         users.forEach(user =>
         {
           if (user.username == searchUsername) {
-            //if user is in group, ask if admin wants to move him/her ? -> move to current group
-            //else add user to current group
-            //refresh students` order?
-            //update current group
+            found = true;
+            if (this.group.students.includes(user._id)) {
+              alert(user.lastName + " " + user.firstName + " is already in group " + this.group.name);
+              return;
+            }
+            var confirmed = confirm("Add " + user.lastName + " " + user.firstName + " to group " + this.group.name + "?");
+            if (!confirmed) return;
+            this.group.students.push(user._id);
+            this.groupsService.updateGroupById(this.groupId, localStorage.getItem("currentToken"), this.group)
+              .subscribe(group => {
+                this.group = group;
+              })
           }
         })
-        alert("User not found.")
+        if (!found) {
+          alert("User not found.");
+          return;
+        }
       }
     )
 
