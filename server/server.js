@@ -41,6 +41,7 @@ app.use(function (req, res, next) {
 
 
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')))
+
 // ---------------------------------------------------- Configuring the database
 const db = require('./config/database.config.js');
 

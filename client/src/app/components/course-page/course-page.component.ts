@@ -28,48 +28,49 @@ export class CoursePageComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router,
               private coursesService: CoursesService,
               private groupsService: GroupsService, private usersService: UsersService,
-              private documentsService: DocumentsService, private tasksService : TasksService) {
+              private documentsService: DocumentsService, private tasksService: TasksService) {
   }
 
   ngOnInit() {
+    console.log("here1");
     this.route.params.subscribe(params => {
+      console.log("here2");
       this.courseId = params.course_id;
-    });
 
-    this.coursesService.getCourseById(this.courseId, localStorage.getItem("currentToken")).subscribe(
-      data => {
-        if (!data.description) data.description = "No description.";
-        this.course = data;
+      this.coursesService.getCourseById(this.courseId, localStorage.getItem("currentToken")).subscribe(
+        data => {
+          if (!data.description) data.description = "No description.";
+          this.course = data;
 
-        for (var i = 0; i < data.docs.length; i++) {
-          this.documentsService.getDocumentById(data.docs[i], localStorage.getItem("currentToken")).subscribe(
+          for (var i = 0; i < data.docs.length; i++) {
+            this.documentsService.getDocumentById(data.docs[i], localStorage.getItem("currentToken")).subscribe(
+              data => {
+                this.documents.push(data);
+              }
+            )
+          }
+
+          for (var i = 0; i < data.members.length; i++) {
+            this.groupsService.getGroupById(data.members[i], localStorage.getItem("currentToken")).subscribe(
+              group => {
+
+                this.members.push(group);
+              }
+            )
+          }
+
+
+          this.ownerId = data.owner_id;
+          this.usersService.getUserById(this.ownerId, localStorage.getItem("currentToken")).subscribe(
             data => {
-              this.documents.push(data);
-            }
-          )
-        }
+              this.owner = data;
+            });
 
-        for (var i = 0; i < data.members.length; i++) {
-          this.groupsService.getGroupById(data.members[i], localStorage.getItem("currentToken")).subscribe(
-            group => {
-
-              this.members.push(group);
-            }
-          )
-        }
-
-
-        this.ownerId = data.owner_id;
-        this.usersService.getUserById(this.ownerId, localStorage.getItem("currentToken")).subscribe(
-          data => {
-            this.owner = data;
-          });
-
-        if (this.ownerId == localStorage.getItem("currentUserId")) {
-          this.teacher = true;
-        }
-      });
-
+          if (this.ownerId == localStorage.getItem("currentUserId")) {
+            this.teacher = true;
+          }
+        });
+    });
   }
 
   enterEditingMode() {
@@ -97,7 +98,7 @@ export class CoursePageComponent implements OnInit {
 
   deleteCourse() {
     var del = confirm("Do you really want to delete this course?");
-    if (!del){
+    if (!del) {
       return;
     }
 
@@ -110,11 +111,11 @@ export class CoursePageComponent implements OnInit {
     )
   }
 
-  openTaskCreation(){
+  openTaskCreation() {
     var task = {
       title: "No Name",
-      deadline : Date.now(),
-      description : "No description.",
+      deadline: Date.now(),
+      description: "No description.",
       docs: []
     }
 

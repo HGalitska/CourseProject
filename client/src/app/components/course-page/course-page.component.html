@@ -16,13 +16,12 @@
   <h3 *ngIf="documents">Materials:</h3>
   <ul class="list-unstyled">
     <li>
-      <app-doc-tile *ngFor="let doc of documents" [doc]="doc" [editMode]="editMode"></app-doc-tile>
+      <app-doc-tile *ngFor="let doc of documents" [doc]="doc" [editMode]="editMode" [courseId]="courseId"></app-doc-tile>
     </li>
   </ul>
   <div *ngIf="editMode">
     <h3>Add Materials:</h3>
     <app-file-uploader [type]="'material'" [course_id]="courseId"></app-file-uploader>
-    <!--<button class="btn btn-outline-primary" (click)="update()">Update</button>-->
   </div>
   <hr>
 

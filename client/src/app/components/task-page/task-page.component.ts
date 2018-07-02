@@ -31,49 +31,52 @@ export class TaskPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentUser = localStorage.getItem("currentUserId");
     this.route.params.subscribe(params => {
+      this.currentUser = localStorage.getItem("currentUserId");
       this.taskId = params.task_id;
+
+      this.tasksService.getTaskById(this.taskId, localStorage.getItem("currentToken")).subscribe(
+        data => {
+          if (!data.description) data.description = "No description.";
+          this.task = data;
+          for (var i = 0; i < data.docs.length; i++) {
+            var doc = this.documentsService.getDocumentById(data.docs[i], localStorage.getItem("currentToken")).subscribe(
+              data => {
+                this.documents.push(data);
+              }
+            )
+          }
+
+        }
+      )
+
+      this.coursesService.getAllCourses(localStorage.getItem("currentToken")).subscribe(
+        courses => {
+          courses.forEach((course) => {
+            if (course.owner_id == localStorage.getItem("currentUserId")) {
+              this.teacher = true;
+            }
+
+            if (course.tasks.includes(this.taskId)) {
+              this.course = course;
+            }
+          })
+        }
+      )
+
+      this.submittedTasksService.getAllSubmittedTasks(localStorage.getItem("currentToken")).subscribe(
+        data => {
+          for (var i = 0; i < data.length; i++) {
+            if (data[i].task_id == this.taskId && (data[i].student_id == this.currentUser || this.teacher)) {
+              this.attempts.push(data[i]);
+              this.uploaded = true;
+            }
+          }
+        }
+      )
     });
 
-    this.tasksService.getTaskById(this.taskId, localStorage.getItem("currentToken")).subscribe(
-      data => {
-        if (!data.description) data.description = "No description.";
-        this.task = data;
-        for (var i = 0; i < data.docs.length; i++) {
-          var doc = this.documentsService.getDocumentById(data.docs[i], localStorage.getItem("currentToken")).subscribe(
-            data => {
-              this.documents.push(data);
-            }
-          )
-        }
 
-      }
-    )
-
-    this.coursesService.getAllCourses(localStorage.getItem("currentToken")).subscribe(
-      courses => {
-        courses.forEach((course) => {
-          if (course.owner_id == localStorage.getItem("currentUserId")) {
-            this.teacher = true;
-          }
-
-          if (course.tasks.includes(this.taskId)) {
-            this.course = course;
-          }
-        })
-      }
-    )
-
-    this.submittedTasksService.getAllSubmittedTasks(localStorage.getItem("currentToken")).subscribe(
-      data => {
-        for (var i = 0; i < data.length; i++) {
-          if (data[i].task_id == this.taskId && (data[i].student_id == this.currentUser || this.teacher)) {
-            this.attempts.push(data[i]);
-          }
-        }
-      }
-    )
 
   }
 

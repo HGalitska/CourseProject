@@ -76,3 +76,16 @@
   cursor: pointer;
   filter: opacity(100%);
 }
+
+#menu {
+  font-size: 10pt;
+  color: grey;
+  text-transform: lowercase;
+  vertical-align: middle;
+  text-align: center;
+  margin-top: 10px;
+}
+
+#menu span:hover {
+  cursor: pointer;
+}

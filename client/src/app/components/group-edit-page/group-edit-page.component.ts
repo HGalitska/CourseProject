@@ -20,22 +20,21 @@ export class GroupEditPageComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    //TODO: need to update group after choosing another one
     this.route.params.subscribe(params => {
       this.groupId = params.group_id;
+
+      this.groupsService.getGroupById(this.groupId, localStorage.getItem("currentToken")).subscribe(
+        group => {
+          this.group = group;
+
+          this.getStudentsForGroup(group);
+        }
+      )
     });
-
-    this.groupsService.getGroupById(this.groupId, localStorage.getItem("currentToken")).subscribe(
-      group => {
-        this.group = group;
-
-        this.getStudentsForGroup(group);
-      }
-    )
   }
 
   getStudentsForGroup(group) {
+    this.students = [];
     for (var i = 0; i < group.students.length; i++) {
       this.usersService.getUserById(group.students[i], localStorage.getItem("currentToken")).subscribe(
         user => {
@@ -85,7 +84,7 @@ export class GroupEditPageComponent implements OnInit {
 
       this.groupsService.updateGroupById(this.groupId, localStorage.getItem("currentToken"), this.group).subscribe(
         group => {
-          console.log(group.students);
+          this.getStudentsForGroup(group);
         }
       )
     }
@@ -100,7 +99,7 @@ export class GroupEditPageComponent implements OnInit {
         var match = false;
         groups.forEach(group => {
           if (group.name == groupName) {
-            var match = true;
+            match = true;
             var move = confirm("Do you really want to move " + student.lastName + " " + student.firstName +
               " to " + group.name + "?");
             if (!move) {
@@ -124,10 +123,13 @@ export class GroupEditPageComponent implements OnInit {
 
             }
           }
-          return;
         })
 
-        if (match == false) alert("No such group.")
+        if (match == false) {
+          alert("No such group.")
+          return
+        }
+        this.getStudentsForGroup(this.group);
       }
     )
 

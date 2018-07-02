@@ -4,6 +4,7 @@ import {SubmittedTasksService} from "../../services/submitted-tasks.service";
 import {CoursesService} from "../../services/courses.service";
 import {TasksService} from "../../services/tasks.service";
 import {Location} from "@angular/common";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-file-uploader',
@@ -22,7 +23,7 @@ export class FileUploaderComponent implements OnInit {
 
   constructor(private http: Http, private submittedTasksService: SubmittedTasksService,
               private coursesService: CoursesService, private tasksService: TasksService,
-              private location : Location) {
+              private router : Router) {
   }
 
   ngOnInit() {
@@ -97,6 +98,7 @@ export class FileUploaderComponent implements OnInit {
         this.coursesService.updateCourseById(this.course_id, localStorage.getItem("currentToken"), course).subscribe(
           course => {
             console.log(course);
+            this.router.navigate(['/profile/course', this.course_id])
           }
         );
       }

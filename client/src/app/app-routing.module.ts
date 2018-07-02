@@ -16,7 +16,8 @@ const routes: Routes = [
   {
     path: 'admin', component: AdminPageComponent,
     children: [
-      {path: 'group/:group_id', component: GroupEditPageComponent}
+      {path: 'group/:group_id', component: GroupEditPageComponent},
+      { path: 'logout',   component: LogoutComponent}
     ]
   },
   {

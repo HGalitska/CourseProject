@@ -12,6 +12,7 @@ export class DocTileComponent implements OnInit {
 
   @Input() doc;
   @Input() editMode;
+  @Input() courseId;
   title;
 
   constructor(private router : Router, private http :Http, private documentsService : DocumentsService) { }
@@ -37,7 +38,7 @@ export class DocTileComponent implements OnInit {
 
     this.documentsService.deleteDocumentById(docId, localStorage.getItem("currentToken")).subscribe(
       deleted => {
-        console.log(deleted);
+        this.router.navigate(['/profile/course/', this.courseId])
       }
     )
 

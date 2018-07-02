@@ -69,12 +69,6 @@ exports.update = (req, res) => {
         });
     }
 
-    if (!req.body.students || !req.body.students[0]) {
-        return res.status(400).send({
-            message: "Group can not be empty."
-        });
-    }
-
     // Find Group and update it with the request body
     Group.findByIdAndUpdate(req.params.groupId, {
         name: req.body.name,
