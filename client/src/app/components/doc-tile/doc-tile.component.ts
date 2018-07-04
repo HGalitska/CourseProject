@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {Router} from "@angular/router";
 import {Http} from "@angular/http";
 import {DocumentsService} from "../../services/documents.service";
@@ -13,6 +13,8 @@ export class DocTileComponent implements OnInit {
   @Input() doc;
   @Input() editMode;
   @Input() courseId;
+
+  @Output() docDeleted;
   title;
 
   constructor(private router : Router, private http :Http, private documentsService : DocumentsService) { }
@@ -38,7 +40,7 @@ export class DocTileComponent implements OnInit {
 
     this.documentsService.deleteDocumentById(docId, localStorage.getItem("currentToken")).subscribe(
       deleted => {
-        this.router.navigate(['/profile/course/', this.courseId])
+        this.docDeleted = deleted;
       }
     )
 

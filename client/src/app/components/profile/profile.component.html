@@ -1,15 +1,19 @@
+<div *ngIf="currentUser != null">
 <app-plainnavbar></app-plainnavbar>
 
-<!-- Side navigation -->
-<div class="sidenav hvr-shadow" routerLink="courses">
-  <div id="user-info">
-    <img src="../../assets/images/studying.svg" alt="Avatar" class="avatar mx-auto d-block">
-    <p>@{{ currentUser.username }}</p>
-    <p><span id="name">{{ currentUser.firstName }} {{ currentUser.lastName }}</span></p>
-  </div>
-</div>
 
-<!-- Page content -->
-<div class="jumbotron main">
-  <router-outlet></router-outlet>
+  <!-- Side navigation -->
+  <div class="sidenav hvr-shadow" routerLink="courses">
+    <div id="user-info">
+      <img src="../../assets/images/studying.svg" alt="Avatar" class="avatar mx-auto d-block">
+      <p>@{{ currentUser.username }}</p>
+      <p><span id="name">{{ currentUser.firstName }} {{ currentUser.lastName }}   </span>
+        <i id="settings" class="fa fa-cog" (click) = "changePassword()"></i></p>
+    </div>
+  </div>
+
+  <!-- Page content -->
+  <div class="jumbotron main">
+    <router-outlet></router-outlet>
+  </div>
 </div>

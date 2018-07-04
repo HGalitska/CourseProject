@@ -54,3 +54,16 @@ table tr td:first-child::before {
 .util:hover {
   cursor: pointer;
 }
+
+#delete-group {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  margin-left: 1000px;
+  filter: opacity(40%);
+}
+
+#delete-group:hover {
+  cursor: pointer;
+  filter: opacity(100%);
+}

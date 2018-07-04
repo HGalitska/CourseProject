@@ -32,9 +32,7 @@ export class CoursePageComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("here1");
     this.route.params.subscribe(params => {
-      console.log("here2");
       this.courseId = params.course_id;
 
       this.coursesService.getCourseById(this.courseId, localStorage.getItem("currentToken")).subscribe(

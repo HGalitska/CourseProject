@@ -169,4 +169,19 @@ export class GroupEditPageComponent implements OnInit {
     )
 
   }
+
+  //TODO: refresh after group deletion
+  deleteGroup() {
+    var del = confirm("Do you really want to delete this group?");
+    if (!del) {
+      return;
+    }
+
+
+    this.groupsService.deleteGroupById(this.groupId, localStorage.getItem("currentToken")).subscribe(
+      group => {
+        console.log(group);
+      }
+    )
+  }
 }

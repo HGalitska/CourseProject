@@ -72,11 +72,15 @@
   font-family: 'Josefin Slab', serif;
 }
 
-#user-info:hover {
-  cursor: pointer;
-}
+/*#user-info:hover {*/
+  /*cursor: pointer;*/
+/*}*/
 
 #name{
   font-weight: bold;
   text-transform: uppercase;
+}
+
+#settings:hover {
+  cursor: pointer;
 }
