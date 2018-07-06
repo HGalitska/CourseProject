@@ -53,7 +53,7 @@ export class CourseComponent implements OnInit {
   }
 
   openCoursePage() {
-    if (admin) return;
+    if (this.admin) return;
     this.router.navigate(['/profile/course', this.course_id])
   }
 

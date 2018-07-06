@@ -174,7 +174,7 @@ export class GroupEditPageComponent implements OnInit {
     var searchUsername = prompt("Enter username:");
     if (!searchUsername) return
 
-    this.usersService.getAllUsers(localStorage.getItem("currentToken")).subscribe(
+    this.usersService.getAllUsers().subscribe(
       users => {
 
         var found = false;
