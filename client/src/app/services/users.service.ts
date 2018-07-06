@@ -14,9 +14,8 @@ export class UsersService {
     return this.http.post(this.url, newUser);
   }
 
-  getAllUsers(token: string): Observable<any> {
-    return (this.http.get(this.url, {
-      headers: { 'x-access-token': token }}))
+  getAllUsers(): Observable<any> {
+    return (this.http.get(this.url))
   }
 
   getUserById(id: string, token: string): Observable<any> {

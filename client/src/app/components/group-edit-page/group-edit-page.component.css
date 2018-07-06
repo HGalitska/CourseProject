@@ -67,3 +67,18 @@ table tr td:first-child::before {
   cursor: pointer;
   filter: opacity(100%);
 }
+
+#add-course {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-left: 1000px;
+  margin-bottom: 20px;
+  margin-top: 50px;
+  filter: opacity(40%);
+}
+
+#add-course:hover {
+  cursor: pointer;
+  filter: opacity(100%);
+}

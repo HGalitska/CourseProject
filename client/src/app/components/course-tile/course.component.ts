@@ -12,6 +12,7 @@ export class CourseComponent implements OnInit {
 
   @Input() course;
   @Input() teacher;
+  @Input() admin;
   course_id;
   owner_id;
   ownerString : string;
@@ -52,6 +53,7 @@ export class CourseComponent implements OnInit {
   }
 
   openCoursePage() {
+    if (admin) return;
     this.router.navigate(['/profile/course', this.course_id])
   }
 

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {GroupsService} from "../../services/groups.service";
 import {UsersService} from "../../services/users.service";
+import {CoursesService} from "../../services/courses.service";
 
 @Component({
   selector: 'app-group-edit-page',
@@ -14,9 +15,10 @@ export class GroupEditPageComponent implements OnInit {
   group;
 
   students = [];
+  courses = [];
 
   constructor(private route: ActivatedRoute, private groupsService: GroupsService,
-              private usersService: UsersService) {
+              private usersService: UsersService, private coursesService: CoursesService) {
   }
 
   ngOnInit() {
@@ -30,6 +32,23 @@ export class GroupEditPageComponent implements OnInit {
           this.getStudentsForGroup(group);
         }
       )
+
+
+
+      this.coursesService.getAllCourses(localStorage.getItem("currentToken")).subscribe(
+        courses => {
+          for (var i = 0; i < courses.length; i++) {
+            var course = courses[i];
+            for (var j = 0; j < course.members.length; j++) {
+              var memberId = course.members[j];
+
+              if (memberId == this.groupId && !this.courses.includes(course)) {
+                this.courses.push(course);
+              }
+            }
+          }
+        });
+
     });
   }
 
@@ -130,6 +149,21 @@ export class GroupEditPageComponent implements OnInit {
           return
         }
         this.getStudentsForGroup(this.group);
+      }
+    )
+
+  }
+
+  addCourse() {
+    var availableCourses = [];
+    this.coursesService.getAllCourses(localStorage.getItem("currentToken")).subscribe(
+      allCourses => {
+        allCourses.forEach(course => {
+          if (!this.courses.includes(course)) availableCourses.push(course);
+        })
+
+        //TODO: propose available courses
+
       }
     )
 

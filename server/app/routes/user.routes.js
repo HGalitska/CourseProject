@@ -4,10 +4,10 @@ module.exports = (app, checkJWT) => {
     // Create a new User
     app.post('/users', users.create);
 
-    app.use(checkJWT);
-
     // Retrieve all Users
     app.get('/users', users.findAll);
+
+    app.use(checkJWT);
 
     // Retrieve a single User with userId
     app.get('/users/:userId', users.findOne);

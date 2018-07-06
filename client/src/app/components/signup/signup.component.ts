@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 
-import { UsersService } from '../../services/users.service';
-import { AuthenticationService } from '../../services/authentication.service';
+import {UsersService} from '../../services/users.service';
+import {AuthenticationService} from '../../services/authentication.service';
 
 import * as decode from "jwt-decode";
 
@@ -14,11 +14,12 @@ import * as decode from "jwt-decode";
 export class SignupComponent {
 
   constructor(private router: Router,
-    private usersService: UsersService,
-    private authenticationService : AuthenticationService) {
+              private usersService: UsersService,
+              private authenticationService: AuthenticationService) {
   }
 
   signup(formData): void {
+
     var newUser = {
       username: formData.username,
       password: formData.password,
@@ -26,15 +27,30 @@ export class SignupComponent {
       lastName: formData.lastName,
       eMail: formData.eMail
     }
-    this.usersService.addNewUser(newUser).subscribe(
-      data => {
-        this.authenticationService.attemptAuth(formData.username, formData.password).subscribe(
-          data => {
-            localStorage.setItem("currentUserId", decode(data.token).user_id);
-            localStorage.setItem("currentToken", data.token);
 
-            this.router.navigate(['/profile']);
-          });
+
+    this.usersService.getAllUsers().subscribe(
+      users => {
+        for (var i = 0; i < users.length; i++) {
+          if (users[i].username == newUser.username) {
+            alert("This username is already being used.");
+            return;
+          }
+        }
+        this.usersService.addNewUser(newUser).subscribe(
+          nUser => {
+
+            this.authenticationService.attemptAuth(formData.username, formData.password).subscribe(
+              data => {
+                console.log(data);
+                localStorage.setItem("currentUserId", decode(data.token).user_id);
+                localStorage.setItem("currentToken", data.token);
+
+                this.router.navigate(['/profile']);
+              });
+
+          }
+        )
       });
   }
 

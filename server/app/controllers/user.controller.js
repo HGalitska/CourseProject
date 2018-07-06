@@ -16,12 +16,6 @@ exports.create = (req, res) => {
     });
   }
 
-  // if (!req.body.lastName) {
-  //   return res.status(400).send({
-  //     message: "Last name can not be empty."
-  //   });
-  // }
-
   const user = new User({
     username: req.body.username,
     password: req.body.password,

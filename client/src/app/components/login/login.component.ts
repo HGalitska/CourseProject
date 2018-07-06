@@ -18,6 +18,10 @@ export class LoginComponent {
   login(formData): void {
     this.authenticationService.attemptAuth(formData.username, formData.password).subscribe(
       data => {
+        if (data.token == null) {
+          alert("Wrong password.");
+          return;
+        }
         localStorage.setItem("currentUserId", decode(data.token).user_id);
         localStorage.setItem("currentToken", data.token);
 
