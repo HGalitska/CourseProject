@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {GroupsService} from "../../services/groups.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-admin-page',
@@ -8,17 +9,20 @@ import {GroupsService} from "../../services/groups.service";
 })
 export class AdminPageComponent implements OnInit {
 
-  groups;
+  groups = [];
 
-  constructor(private groupsService: GroupsService) { }
+  constructor(private groupsService: GroupsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getAllGroups()
+    this.route.params.subscribe(params => {
+      this.getAllGroups()
+    })
   }
 
   getAllGroups() {
     this.groupsService.getAllGroups(localStorage.getItem("currentToken")).subscribe(
       groups => {
+        this.groups = [];
         this.groups = groups;
       }
     )

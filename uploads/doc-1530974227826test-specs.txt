@@ -1,0 +1,11 @@
+The tests of the file system will assume the following sizes of the 
+disk and the internal data structures:
+
+Disk: 4 cylinders, 2 surfaces, 8 sectors/track, 64 Bytes/sector
+
+File name: maximum of 4 characters, no extension
+
+Number of files: not more than 10
+
+Number of open files: 3 plus the directory, i.e., the size of the OFT is exactly 4 entries. 
+The directory should be opened automatically (with index=0) when the file system starts, i.e., whenever the command "in" is issued. 

@@ -69,16 +69,23 @@ table tr td:first-child::before {
 }
 
 #add-course {
-  width: 20px;
-  height: 20px;
   display: inline-block;
-  margin-left: 1000px;
+  margin-left: 800px;
   margin-bottom: 20px;
   margin-top: 50px;
   filter: opacity(40%);
 }
 
+#remove-course {
+  filter: opacity(40%);
+}
+
 #add-course:hover {
+  cursor: pointer;
+  filter: opacity(100%);
+}
+
+#remove-course:hover {
   cursor: pointer;
   filter: opacity(100%);
 }

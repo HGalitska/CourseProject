@@ -33,10 +33,15 @@ export class CoursePageComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
+
       this.courseId = params.course_id;
 
       this.coursesService.getCourseById(this.courseId, localStorage.getItem("currentToken")).subscribe(
         data => {
+
+          this.documents = [];
+          this.members = [];
+
           if (!data.description) data.description = "No description.";
           this.course = data;
 
@@ -129,6 +134,4 @@ export class CoursePageComponent implements OnInit {
       }
     )
   }
-
-
 }

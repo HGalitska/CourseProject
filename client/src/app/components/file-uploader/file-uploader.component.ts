@@ -98,7 +98,7 @@ export class FileUploaderComponent implements OnInit {
         this.coursesService.updateCourseById(this.course_id, localStorage.getItem("currentToken"), course).subscribe(
           course => {
             console.log(course);
-            this.router.navigate(['/profile/course', this.course_id])
+            this.router.navigate(['/profile/course', course._id])
           }
         );
       }

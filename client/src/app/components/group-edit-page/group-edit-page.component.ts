@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {GroupsService} from "../../services/groups.service";
 import {UsersService} from "../../services/users.service";
 import {CoursesService} from "../../services/courses.service";
@@ -18,12 +18,14 @@ export class GroupEditPageComponent implements OnInit {
   courses = [];
 
   constructor(private route: ActivatedRoute, private groupsService: GroupsService,
-              private usersService: UsersService, private coursesService: CoursesService) {
+              private usersService: UsersService, private coursesService: CoursesService,
+              private router: Router) {
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.groupId = params.group_id;
+
 
       this.groupsService.getGroupById(this.groupId, localStorage.getItem("currentToken")).subscribe(
         group => {
@@ -37,6 +39,7 @@ export class GroupEditPageComponent implements OnInit {
 
       this.coursesService.getAllCourses(localStorage.getItem("currentToken")).subscribe(
         courses => {
+          this.courses = [];
           for (var i = 0; i < courses.length; i++) {
             var course = courses[i];
             for (var j = 0; j < course.members.length; j++) {
@@ -154,22 +157,64 @@ export class GroupEditPageComponent implements OnInit {
 
   }
 
+  removeCourse() {
+        var promptString = ""
+        this.courses.forEach(course => {
+          promptString += this.courses.indexOf(course) + " - " + course.name + "\n";
+        })
+
+        var choice = prompt(promptString);
+        if(choice != undefined) {
+          var toRemoveCourse = this.courses[choice];
+          toRemoveCourse.members.splice(toRemoveCourse.members.indexOf(this.groupId), 1);
+
+          this.courses.splice(this.courses.indexOf(toRemoveCourse, 1));
+
+          this.coursesService.updateCourseById(toRemoveCourse._id, localStorage.getItem("currentToken"), toRemoveCourse).subscribe(
+            updatedCourse => console.log(updatedCourse)
+          );
+        }
+
+  }
+
   addCourse() {
+
     var availableCourses = [];
     this.coursesService.getAllCourses(localStorage.getItem("currentToken")).subscribe(
       allCourses => {
+        console.log(this.courses);
         allCourses.forEach(course => {
-          if (!this.courses.includes(course)) availableCourses.push(course);
+          var match = false;
+          this.courses.forEach(groupCourse => {
+            if (course._id == groupCourse._id) match = true;
+          })
+          if (!match) availableCourses.push(course);
         })
 
-        //TODO: propose available courses
+        var promptString = ""
+        availableCourses.forEach(course => {
+          promptString += availableCourses.indexOf(course) + " - " + course.name + "\n";
+        })
+
+        var choice = prompt(promptString);
+        if(choice != undefined) {
+          var newCourse = availableCourses[choice];
+          console.log(newCourse)
+          this.courses.push(newCourse);
+          newCourse.members.push(this.groupId);
+          console.log(newCourse)
+
+          this.coursesService.updateCourseById(newCourse._id, localStorage.getItem("currentToken"), newCourse).subscribe(
+            updatedCourse => console.log(updatedCourse)
+          );
+        }
+
 
       }
     )
 
   }
 
-  //TODO: refresh on changes
   addStudent() {
     var searchUsername = prompt("Enter username:");
     if (!searchUsername) return
@@ -189,6 +234,20 @@ export class GroupEditPageComponent implements OnInit {
             var confirmed = confirm("Add " + user.lastName + " " + user.firstName + " to group " + this.group.name + "?");
             if (!confirmed) return;
             this.group.students.push(user._id);
+            this.students.push(user);
+            this.students.sort(function (a, b) {
+              // Use toUpperCase() to ignore character casing
+              const sA = a.lastName.toUpperCase();
+              const sB = b.lastName.toUpperCase();
+
+              let comparison = 0;
+              if (sA > sB) {
+                comparison = 1;
+              } else if (sA < sB) {
+                comparison = -1;
+              }
+              return comparison;
+            });
             this.groupsService.updateGroupById(this.groupId, localStorage.getItem("currentToken"), this.group)
               .subscribe(group => {
                 this.group = group;
@@ -214,7 +273,8 @@ export class GroupEditPageComponent implements OnInit {
 
     this.groupsService.deleteGroupById(this.groupId, localStorage.getItem("currentToken")).subscribe(
       group => {
-        console.log(group);
+        this.group = null;
+        this.router.navigate(['/admin']);
       }
     )
   }
